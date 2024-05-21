@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   const { number } = req.query;
 
   if (number === "" || number === null) {
-    res.status(400).send("Invalid request!!");
+    res.status(400).send("Invalid Request!");
   }
 
   await dbConnect();
@@ -24,6 +24,18 @@ export default async function handler(req, res) {
           data: postDet,
           msg: "successful",
         });
+      } catch (error) {
+        res.status(400).json({ success: false });
+      }
+      break;
+
+    case "DELETE":
+      console.log("DELETE ID ::::::", number);
+
+      try {
+        const filter = { _id: req.body.postID };
+        const post = await Posts.deleteOne(filter);
+        res.status(200).json({ success: true, data: post });
       } catch (error) {
         res.status(400).json({ success: false });
       }

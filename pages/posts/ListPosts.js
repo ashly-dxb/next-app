@@ -5,9 +5,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../../container.module.css";
 import Layout from "../components/layout";
 
+import { useRouter } from "next/router";
+
 export default function ListPosts() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
+
+  const router = useRouter();
 
   useEffect(() => {
     fetch("/api/posts")
@@ -17,6 +21,25 @@ export default function ListPosts() {
         setLoading(false);
       });
   }, []);
+
+  const handleDelete = (postID, event) => {
+    event.preventDefault();
+
+    console.log("DELETE postID:: ", postID);
+
+    setLoading(true);
+
+    fetch(`../api/posts/${postID}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((respData) => {
+        setLoading(false);
+
+        router.replace("/posts/ListPosts"); // redirect to the listing page
+        return null; // Render nothing on this page
+      });
+  };
 
   // if (isLoading) return <p>Loading...</p>;
   // if (posts === undefined || posts.length < 1) return <p>No posts found</p>;
@@ -30,7 +53,7 @@ export default function ListPosts() {
           <h3 className={`${styles.pageHeading}`}>Posts</h3>
 
           <div
-            className={`${styles.rowStriped} d-flex flex-md-row my-1 align-items-center rounded py-3 fw-bold`}
+            className={`d-flex flex-md-row my-1 align-items-center rounded py-3 fw-bold`}
           >
             <div className="flex-column col-md-3 col-sm-1 col-4">Title</div>
             <div className="flex-column col-md-4 col-sm-1 col-1 d-none d-lg-block">
@@ -57,7 +80,7 @@ export default function ListPosts() {
                 <div className="flex-column col-md-3 col-sm-1 col-4">
                   {moment(item.createdDate).format("YYYY-MM-DD HH:mm")}
                 </div>
-                <div className="flex-column col-md-2 col-sm-1 col-3">
+                <div className="flex-column col-md-2 col-sm-1 col-4">
                   <Link
                     href={{
                       pathname: "/posts/ViewPost",
@@ -66,8 +89,19 @@ export default function ListPosts() {
                   >
                     View
                   </Link>
-
-                  <button>Delete</button>
+                  &nbsp;&nbsp;
+                  <Link
+                    href={{
+                      pathname: "/posts/EditPost",
+                      query: { postID: item._id },
+                    }}
+                  >
+                    Edit
+                  </Link>
+                  &nbsp;&nbsp;
+                  <button onClick={(event) => handleDelete(item._id, event)}>
+                    Delete
+                  </button>
                 </div>
               </div>
             );

@@ -29,6 +29,24 @@ export default async function handler(req, res) {
       // redirect(`/posts/ListPosts`); // Navigate to the listing page from ServerSide itself
       break;
 
+    case "PUT":
+      try {
+        const filter = { _id: req.body.postID };
+        const updateDoc = {
+          $set: {
+            title: req.body.title,
+            description: req.body.description,
+          },
+        };
+
+        const post = await Posts.updateOne(filter, updateDoc);
+        res.status(200).json({ success: true, data: post });
+      } catch (error) {
+        res.status(400).json({ success: false });
+      }
+      // redirect(`/posts/ListPosts`); // Navigate to the listing page from ServerSide itself
+      break;
+
     default:
       res.status(400).json({ success: false });
       break;
