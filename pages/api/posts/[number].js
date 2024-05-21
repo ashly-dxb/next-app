@@ -18,7 +18,7 @@ export default async function handler(req, res) {
       console.log("GET ID ::::::", number);
       try {
         const postDet = await Posts.find({ _id: number });
-        console.log("data :::::::", postDet);
+        // console.log("data :::::::", postDet);
         res.status(200).json({
           success: true,
           data: postDet,
@@ -33,8 +33,7 @@ export default async function handler(req, res) {
       console.log("DELETE ID ::::::", number);
 
       try {
-        const filter = { _id: req.body.postID };
-        const post = await Posts.deleteOne(filter);
+        const post = await Posts.deleteOne({ _id: number });
         res.status(200).json({ success: true, data: post });
       } catch (error) {
         res.status(400).json({ success: false });
