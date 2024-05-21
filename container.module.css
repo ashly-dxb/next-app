@@ -1,0 +1,100 @@
+
+.outerBody {
+    min-height: 100%;
+    border: 6px solid purple;
+}
+
+.myContainer,
+.container {
+    padding: 20px 10px;
+    margin: 10px auto 10px;
+
+    font-family: "Verdana";
+    font-size: 15px;
+
+    border: 2px solid rgb(12, 230, 30);
+}
+
+.myContentArea {
+    border: 2px solid rgb(233, 153, 5);
+}
+
+.mainHeader, .navbar {
+    background-color: rgb(179, 153, 153);
+    color: rgb(71, 55, 165) !important;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.mynavitem {
+    color:white;
+    
+    padding: 4px;
+    margin-right: 20px;
+
+    font-family: Cambria, serif;
+    font-size: 18px;
+    /* font-weight: bold; */
+}
+
+.mynavitem a {
+    text-decoration: none !important;
+}
+
+.nav-link {
+    color: white !important;
+    letter-spacing: 1pt;
+}
+
+.nav-link:hover {
+    color: rgb(191, 191, 218) !important;
+    letter-spacing: 1pt;
+}
+
+.navbar-nav > .nav-item > .active{
+    color: rgb(50, 50, 136) !important;
+    font-weight: bold;
+    letter-spacing: 1pt;
+}
+  
+.menuLink {
+    /* background-color: yellow; */
+    color: blue;
+    padding: 3px;
+    font-family: "Verdana";
+    font-size: 18px;
+    list-style: none;
+    margin-top: 5px;
+    margin-left: 15px;
+    border: 1px solid orange;
+};
+  
+.menuLink:hover {
+    color: cyan;
+    /* border-bottom: 1px solid purple; */
+    font-size: 20px;
+}
+
+
+
+/* Listing tables */
+.rowStriped:nth-child(odd) { background-color: rgb(191, 221, 231); }
+.rowStriped:nth-child(even) { background-color: rgb(164, 224, 164); }
+
+.lineBreaks {
+    white-space: pre-wrap;
+    /* word-wrap: break-word; */
+}
+
+
+h3.pageHeading {
+    color: blue;
+    font-family: Cambria, serif;
+}
+
+.footerArea{   
+    /* position: absolute; */
+    width: 100%;
+    bottom: 0;
+    box-sizing: border-box;
+}
