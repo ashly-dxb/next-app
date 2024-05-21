@@ -1,7 +1,7 @@
 
 .outerBody {
     min-height: 100%;
-    border: 6px solid purple;
+    /* border: 6px solid purple; */
 }
 
 .myContainer,
@@ -12,11 +12,11 @@
     font-family: "Verdana";
     font-size: 15px;
 
-    border: 2px solid rgb(12, 230, 30);
+    /* border: 2px solid rgb(12, 230, 30); */
 }
 
 .myContentArea {
-    border: 2px solid rgb(233, 153, 5);
+    /* border: 2px solid rgb(233, 153, 5); */
 }
 
 .mainHeader, .navbar {
@@ -66,7 +66,7 @@
     list-style: none;
     margin-top: 5px;
     margin-left: 15px;
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
 };
   
 .menuLink:hover {
