@@ -40,6 +40,8 @@ export default function ListPosts() {
             <div className="flex-column col-md-2 col-sm-1 col-3">-</div>
           </div>
 
+          {isLoading ? <p>Loading...</p> : ""}
+
           {posts.map((item, index) => {
             return (
               <div
