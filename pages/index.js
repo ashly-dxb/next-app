@@ -28,8 +28,10 @@ const heading = {
 const Home = ({ allMovies }) => {
   return (
     <Layout>
-      <div className={styles.container}>
-        <h3 style={heading}>Movie List</h3>
+      <div
+        className={`d-flex justify-content-center align-items-center bg-light ${styles.myContainer}`}
+      >
+        <h3 className={`${styles.pageHeading}`}>Movies</h3>
 
         <ul>
           {allMovies.map((item) => (
