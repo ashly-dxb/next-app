@@ -5,8 +5,8 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Ashly's Code World</title>
-        <meta name="description" content="Ashly Thomas Abraham's website" />
+        <title>Ashly&#39;s Code World</title>
+        <meta name="description" content="Ashly Thomas Abraham&#39;s website" />
         <meta
           name="keywords"
           content="Ashly Thomas Abraham, Software Dubai, Web developer, Professional Web Developer, Trinity Church Dubai"
