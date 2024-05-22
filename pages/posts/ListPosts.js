@@ -7,6 +7,13 @@ import Layout from "../components/layout";
 
 import { useRouter } from "next/router";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTrashAlt,
+  faPencilAlt,
+  faBook,
+} from "@fortawesome/free-solid-svg-icons";
+
 export default function ListPosts() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
@@ -53,7 +60,7 @@ export default function ListPosts() {
           <h3 className={`${styles.pageHeading}`}>Posts</h3>
 
           <div
-            className={`d-flex flex-md-row my-1 align-items-center rounded py-3 fw-bold`}
+            className={`d-flex flex-md-row px-1 my-1 py-2 align-items-center rounded fw-bold`}
           >
             <div className="flex-column col-md-3 col-sm-1 col-4">Title</div>
             <div className="flex-column col-md-4 col-sm-1 col-1 d-none d-lg-block">
@@ -68,10 +75,12 @@ export default function ListPosts() {
           {posts.map((item, index) => {
             return (
               <div
-                className={`${styles.rowStriped} d-flex flex-md-row my-1 align-items-center rounded`}
+                className={`${styles.rowStriped} d-flex flex-md-row px-1 my-1 align-items-center rounded`}
                 key={index}
               >
-                <div className="flex-column col-md-3 col-sm-1 col-4">
+                <div
+                  className={`flex-column col-md-3 col-sm-1 col-4 ${styles.textEllipsis}`}
+                >
                   {item.title}
                 </div>
                 <div className="flex-column col-md-4 col-sm-1 col-1 d-none d-lg-block">
@@ -86,21 +95,32 @@ export default function ListPosts() {
                       pathname: "/posts/ViewPost",
                       query: { postID: item._id },
                     }}
+                    className="p-2 outline-none rounded hover-shadow text-success border-0 bg-transparent"
+                    aria-label="Details"
+                    title="View Details"
                   >
-                    View
+                    <FontAwesomeIcon icon={faBook} />
                   </Link>
-                  &nbsp;&nbsp;
+                  &nbsp;
                   <Link
                     href={{
                       pathname: "/posts/EditPost",
                       query: { postID: item._id },
                     }}
+                    className="p-2 outline-none rounded hover-shadow text-primary border-0 bg-transparent"
+                    aria-label="Edit"
+                    title="Edit"
                   >
-                    Edit
+                    <FontAwesomeIcon icon={faPencilAlt} />
                   </Link>
-                  &nbsp;&nbsp;
-                  <button onClick={(event) => handleDelete(item._id, event)}>
-                    Delete
+                  &nbsp;
+                  <button
+                    className="p-2 outline-none rounded hover-shadow text-danger border-0 bg-transparent"
+                    aria-label="Delete"
+                    title="Delete"
+                    onClick={(event) => handleDelete(item._id, event)}
+                  >
+                    <FontAwesomeIcon icon={faTrashAlt} />
                   </button>
                 </div>
               </div>
