@@ -21,13 +21,12 @@ export default function Login() {
   const onLogin = async () => {
     try {
       setLoading(true);
-
       const response = await axios.post("../api/users/login", user);
 
       if (response.data.success) {
         router.push("/");
       } else {
-        setError(response.data.message);
+        setError(response.data.error);
       }
     } catch (error) {
       console.log("Login failed", error.message);

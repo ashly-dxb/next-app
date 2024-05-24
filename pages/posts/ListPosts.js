@@ -62,12 +62,12 @@ export default function ListPosts() {
           <div
             className={`d-flex flex-md-row px-1 my-1 py-2 align-items-center rounded fw-bold`}
           >
-            <div className="flex-column col-md-3 col-sm-1 col-5">Title</div>
+            <div className="flex-column col-md-3 col-sm-1 col-4">Title</div>
             <div className="flex-column col-md-4 col-sm-1 col-1 d-none d-lg-block">
               Description
             </div>
             <div className="flex-column col-md-3 col-sm-1 col-4">Date</div>
-            <div className="flex-column col-md-2 col-sm-1 col-3">-</div>
+            <div className="flex-column col-md-2 col-sm-1 col-4">&nbsp;</div>
           </div>
 
           {isLoading ? <p>Loading...</p> : ""}
@@ -79,7 +79,7 @@ export default function ListPosts() {
                 key={index}
               >
                 <div
-                  className={`flex-column col-md-3 col-sm-1 col-5 ${styles.textEllipsis}`}
+                  className={`flex-column col-md-3 col-sm-1 col-4 ${styles.textEllipsis}`}
                 >
                   {item.title}
                 </div>
@@ -91,7 +91,7 @@ export default function ListPosts() {
                 <div className="flex-column col-md-3 col-sm-1 col-4">
                   {moment(item.createdDate).format("YYYY-MM-DD HH:mm")}
                 </div>
-                <div className="flex-column col-md-2 col-sm-1 col-3">
+                <div className="flex-column col-md-2 col-sm-1 col-4">
                   <Link
                     href={{
                       pathname: "/posts/ViewPost",

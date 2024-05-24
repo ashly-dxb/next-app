@@ -80,11 +80,11 @@ export default async function handler(req, res) {
 
         // Create a JSON response indicating successful login
         res.json({
-          message: "Login successful !",
           success: true,
+          message: "Login successful",
         });
       } catch (error) {
-        res.json({ error: error.message }, { status: 500 });
+        res.status(500).json({ success: false, message: error.message });
       }
       break;
 
