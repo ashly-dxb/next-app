@@ -83,7 +83,9 @@ export default function SignUp() {
             >
               Sign Up
             </button>
+          </div>
 
+          <div className="form-group mb-3 pt-3">
             <Link href="/Login">Login</Link>
           </div>
         </div>
