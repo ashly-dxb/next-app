@@ -15,10 +15,8 @@ export default async function handler(req, res) {
 
   switch (method) {
     case "GET":
-      console.log("GET ID ::::::", number);
       try {
         const postDet = await Posts.find({ _id: number });
-        // console.log("data :::::::", postDet);
         res.status(200).json({
           success: true,
           data: postDet,
@@ -30,8 +28,6 @@ export default async function handler(req, res) {
       break;
 
     case "DELETE":
-      console.log("DELETE ID ::::::", number);
-
       try {
         const post = await Posts.deleteOne({ _id: number });
         res.status(200).json({ success: true, data: post });

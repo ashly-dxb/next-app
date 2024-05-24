@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+import Navbar from "./Navbar2";
 import Footer from "./Footer";
 
 import styles from "../../container.module.css";

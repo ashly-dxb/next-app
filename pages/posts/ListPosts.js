@@ -83,7 +83,9 @@ export default function ListPosts() {
                 >
                   {item.title}
                 </div>
-                <div className="flex-column col-md-4 col-sm-1 col-1 d-none d-lg-block">
+                <div
+                  className={`flex-column col-md-4 col-sm-1 col-1 ${styles.textEllipsis} d-none d-lg-block`}
+                >
                   {item.description}
                 </div>
                 <div className="flex-column col-md-3 col-sm-1 col-4">

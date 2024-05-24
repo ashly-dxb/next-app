@@ -1,4 +1,4 @@
-// models/Post.js
+// models/Posts.js
 import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema({
@@ -21,4 +21,3 @@ const PostSchema = new mongoose.Schema({
 });
 
 export default mongoose.models.Posts || mongoose.model("Posts", PostSchema);
-// module.exports = mongoose.model("posts", PostSchema);
