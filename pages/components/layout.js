@@ -7,7 +7,7 @@ export default function Layout({ children }) {
   return (
     <div className={styles.outerBody}>
       <Navbar />
-      <div className={styles.myContentArea} style={{ marginTop: "55px" }}>
+      <div className={styles.myContentArea} style={{ marginTop: "2px" }}>
         {children}
       </div>
       <Footer />

@@ -13,11 +13,9 @@ export default async function handler(req, res) {
 
   await dbConnect();
 
-  var expiryDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 days
-
   // const cookies = new Cookies(req.headers.cookie, {
   //   path: "/",
-  //   expires: expiryDate,
+  //   expires: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000),
   //   httpOnly: true,
   //   secure: true,
   //   sameSite: "None",
@@ -67,15 +65,16 @@ export default async function handler(req, res) {
         // });
 
         const cookieOpt = {
-          expires: new Date(Date.now() + 24 * 60 * 60 * 1000 * 180), // 180 days
+          // expires: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000), // 180 days
+          maxAge: 180 * 24 * 60 * 60 * 1000,
           httpOnly: false,
-          secure: true,
+          secure: false,
           sameSite: "None",
         };
 
         setCookie("my_access_token", token, cookieOpt);
 
-        console.log("COOKIES SETTTTTT in LOGIN", getCookie("my_access_token"));
+        console.log("COOKIES RETRIEVED", getCookie("my_access_token"));
 
         // Create a JSON response indicating successful login
         res.json({

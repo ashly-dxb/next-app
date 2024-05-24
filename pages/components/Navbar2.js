@@ -12,32 +12,39 @@ export default function Navbar({ children }) {
       id: 1,
       link: "/",
       text: "Home",
+      type: "AUTH",
     },
     {
       id: 2,
       link: "/posts/ListPosts",
       text: "Posts",
+      type: "AUTH",
     },
     {
       id: 3,
       link: "/posts/CreatePost",
       text: "Create Post",
+      type: "AUTH",
     },
     {
       id: 4,
       link: "/users/SignUp",
       text: "Sign Up",
+      type: "NOT_AUTH",
     },
     {
       id: 5,
       link: "/Login",
       text: "Login",
+      type: "NOT_AUTH",
+    },
+    {
+      id: 6,
+      link: "/Logout",
+      text: "Logout",
+      type: "AUTH",
     },
   ];
-
-  //   const handleLinkClick = () => {
-  //     setIsOpen(!isOpen);
-  //   };
 
   const pathname = usePathname();
 
@@ -59,7 +66,7 @@ export default function Navbar({ children }) {
               href={link}
               className={`no-underline text-blue-500 hover:text-white-700 ${
                 pathname === link
-                  ? "bg-yellow-400 px-3 py-2 rounded text-white font-semibold"
+                  ? " px-3 py-1 rounded text-white border-blue-500 border-1 font-semibold"
                   : ""
               }`}
             >
@@ -73,7 +80,7 @@ export default function Navbar({ children }) {
         onClick={() => setIsOpen(!isOpen)}
         className="cursor-pointer z-10 text-gray-500 md:hidden"
       >
-        <svg className="h-7 w-7 fill-current" viewBox="0 0 28 28">
+        <svg className="h-10 w-10 fill-current" viewBox="0 0 24 24">
           {isOpen ? (
             <path
               fillRule="evenodd"
@@ -98,7 +105,7 @@ export default function Navbar({ children }) {
               <Link
                 href={link}
                 onClick={() => setIsOpen(!isOpen)}
-                className={`text-4xl no-underline  text-white hover:text-blue-100 w-full shrink-0 ${
+                className={`text-3xl no-underline  text-white hover:text-blue-100 w-full shrink-0 ${
                   pathname === link
                     ? "bg-yellow-600 py-2 px-2 rounded text-white font-bold w-full shrink-0"
                     : ""
