@@ -164,7 +164,7 @@ const UpdatePost = () => {
             <div className="form-group mb-3 pt-3">
               <button
                 type="submit"
-                className="btn btn-primary w-100 rounded-0 "
+                className="btn btn-primary w-25 rounded-0 mr-5"
               >
                 <FontAwesomeIcon
                   icon={isLoading ? faSpinner : faRefresh}
@@ -173,6 +173,14 @@ const UpdatePost = () => {
                   title="Refresh"
                 />
                 Update Post
+              </button>
+
+              <button
+                type="button"
+                className="btn btn-secondary rounded-0 "
+                onClick={() => router.back()}
+              >
+                Back
               </button>
             </div>
           </form>

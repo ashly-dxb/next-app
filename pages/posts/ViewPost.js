@@ -5,12 +5,14 @@ import styles from "../../container.module.css";
 import Layout from "../components/layout";
 
 import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 
 export default function ViewPost() {
   const [data, setData] = useState({});
   const [isLoading, setLoading] = useState(true);
 
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
     const postID = searchParams.get("postID");
@@ -59,6 +61,14 @@ export default function ViewPost() {
               {moment(data.createdDate).format("YYYY-MM-DD HH:mm")}
             </div>
           </div>
+
+          <button
+            type="button"
+            className="btn btn-secondary rounded-0 "
+            onClick={() => router.back()}
+          >
+            Go back
+          </button>
         </div>
       </div>
     </Layout>

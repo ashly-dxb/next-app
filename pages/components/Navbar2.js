@@ -23,7 +23,7 @@ export default function Navbar({ children }) {
     {
       id: 3,
       link: "/posts/CreatePost",
-      text: "Create Post",
+      text: "Add Post",
       type: "AUTH",
     },
     {

@@ -6,7 +6,7 @@ import Layout from "../components/layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner, faRefresh } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -14,7 +14,6 @@ const CreatePost = () => {
 
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
-
   const [isLoading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -37,10 +36,10 @@ const CreatePost = () => {
     setIsFormValid(Object.keys(errors).length === 0);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (event) => {
+    // event.preventDefault();
 
-    validateForm();
+    await validateForm();
     if (!isFormValid) {
       return false;
     }
@@ -62,6 +61,7 @@ const CreatePost = () => {
       .then((res) => res.json())
       .then((respData) => {
         setLoading(false);
+
         router.replace("/posts/ListPosts"); // redirect to the listing page
         return null; // Render nothing on this page
       });
@@ -77,7 +77,7 @@ const CreatePost = () => {
         <div className="py-2 px-3 col-lg-6 col-md-8 col-12">
           <h3 className={`${styles.pageHeading}`}>Add Post</h3>
 
-          <form id="myForm" method="post" onSubmit={handleSubmit}>
+          <form id="myForm" method="post">
             <div className="form-group mb-3 pt-3">
               <label htmlFor="title">Title</label>
 
@@ -120,8 +120,8 @@ const CreatePost = () => {
 
             <div className="form-group mb-3 pt-3">
               <button
-                type="submit"
                 className="btn btn-primary w-100 rounded-0 "
+                onClick={handleSubmit}
               >
                 <FontAwesomeIcon
                   icon={isLoading ? faSpinner : faRefresh}

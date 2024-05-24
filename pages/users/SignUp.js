@@ -33,13 +33,13 @@ export default function SignUp() {
 
     if (!user.email) {
       errors.email = "Email is required";
-    } else if (email.length > 30) {
+    } else if (user.email.length > 30) {
       errors.email = "Email is too long";
     }
 
     if (!user.password) {
       errors.password = "Password is required";
-    } else if (password.length > 20) {
+    } else if (user.password.length > 20) {
       errors.password = "Password is too long";
     }
 
