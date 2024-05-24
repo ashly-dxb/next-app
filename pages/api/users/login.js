@@ -76,7 +76,6 @@ export default async function handler(req, res) {
         setCookie("my_access_token", token, cookieOpt);
 
         console.log("COOKIES SETTTTTT in LOGIN", getCookie("my_access_token"));
-        console.log("COOKIES SETTTTTT in LOGIN", getCookie("xxxx"));
 
         // Create a JSON response indicating successful login
         res.json({
