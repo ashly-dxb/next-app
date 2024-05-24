@@ -18,22 +18,23 @@ export async function handler(req, res) {
         });
 
         if (!user) {
-          return res.json({ error: "Invalid token" }, { status: 400 });
+          return res
+            .status(400)
+            .json({ success: false, message: "Invalid token" });
         }
 
-        // Update user properties
         user.usVerified = true;
         user.verifyToken = undefined;
         user.verifyTokenExpiry = undefined;
 
         await user.save();
 
-        res.json({
-          message: "Email verified successfully",
+        res.status(200).json({
           success: true,
+          message: "Email verified successfully",
         });
       } catch (error) {
-        res.json({ error: error.message }, { status: 500 });
+        res.status(500).json({ success: false, message: error.message });
       }
       break;
 

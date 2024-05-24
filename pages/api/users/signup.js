@@ -16,7 +16,9 @@ export default async function handler(req, res) {
 
         const user = await Users.findOne({ email });
         if (user) {
-          return res.json({ error: "User already exists" }, { status: 400 });
+          return res
+            .status(400)
+            .json({ success: false, message: "The email is already existing" });
         }
 
         const salt = await bcryptjs.genSalt(10);

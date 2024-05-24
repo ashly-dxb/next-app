@@ -31,15 +31,14 @@ export default async function handler(req, res) {
         const user = await Users.findOne({ email });
 
         if (!user) {
-          res.json({ error: "User does not exist" }, { status: 400 });
+          res
+            .status(400)
+            .json({ success: false, message: "User does not exist" });
         }
 
         const validPassword = await bcryptjs.compare(password, user.password);
         if (!validPassword) {
-          res.json(
-            { success: false, message: "Invalid password" },
-            { status: 400 }
-          );
+          res.status(400).json({ success: false, message: "Invalid password" });
         }
 
         const tokenData = {
@@ -77,7 +76,7 @@ export default async function handler(req, res) {
         console.log("COOKIES RETRIEVED", getCookie("my_access_token"));
 
         // Create a JSON response indicating successful login
-        res.json({
+        res.status(200).json({
           success: true,
           message: "Login successful",
         });

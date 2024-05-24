@@ -27,7 +27,7 @@ export default function Login() {
       if (response.data.success) {
         router.push("/");
       } else {
-        setError(response.data.error);
+        setError(response.data.message);
       }
     } catch (error) {
       console.log("Login failed", error.message);

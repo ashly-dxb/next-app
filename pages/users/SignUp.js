@@ -61,7 +61,7 @@ export default function SignUp() {
         setLoading(false);
         router.push("/Login");
       } else {
-        setError(response.data.error);
+        setError(response.data.message);
       }
     } catch (error) {
       console.log("Signup failed", error.message);
