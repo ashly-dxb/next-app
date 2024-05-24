@@ -8,6 +8,7 @@ import Layout from "./components/layout";
 
 export default function Login() {
   const router = useRouter();
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -42,7 +43,7 @@ export default function Login() {
       >
         <div className="py-2 px-3 col-lg-6 col-md-8 col-12">
           <h3 className={`${styles.pageHeading}`}>
-            {loading ? "Processing" : "Login"}
+            {loading ? "Please wait..." : "Login"}
           </h3>
 
           <div className="form-group mb-3 pt-3">

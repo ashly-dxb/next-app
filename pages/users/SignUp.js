@@ -14,15 +14,21 @@ export default function SignUp() {
     username: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const onSignup = async () => {
     try {
       const response = await axios.post("../api/users/signup", user);
       if (response.data.success) {
         router.push("/Login");
+      } else {
+        setError(response.data.error);
       }
     } catch (error) {
-      console.log("Signup failed", error);
+      console.log("Signup failed", error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -32,7 +38,7 @@ export default function SignUp() {
         className={`d-flex justify-content-center align-items-center bg-light ${styles.myContainer}`}
       >
         <div className="py-2 px-3 col-lg-6 col-md-8 col-12">
-          <h3 className={`${styles.pageHeading}`}>Signup</h3>
+          <h3 className={`${styles.pageHeading}`}>Sign Up</h3>
 
           <div className="form-group mb-3 pt-3">
             <label htmlFor="email">Email</label>
@@ -81,7 +87,7 @@ export default function SignUp() {
               onClick={onSignup}
               className="btn btn-primary w-100 rounded-0 "
             >
-              Sign Up
+              Sign Up {loading ? "..." : ""}
             </button>
           </div>
 
