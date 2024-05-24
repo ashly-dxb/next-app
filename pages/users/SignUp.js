@@ -10,17 +10,55 @@ export default function SignUp() {
   const router = useRouter();
 
   const [user, setUser] = useState({
-    email: "",
-    username: "",
-    password: "",
+    email: null,
+    username: null,
+    password: null,
   });
-  const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
+  const [errors, setErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const validateForm = () => {
+    let errors = {};
+
+    if (!user.username) {
+      errors.username = "Username is required";
+    } else if (username.length > 30) {
+      errors.username = "Username is too long";
+    }
+
+    if (!user.email) {
+      errors.email = "Email is required";
+    } else if (email.length > 30) {
+      errors.email = "Email is too long";
+    }
+
+    if (!user.password) {
+      errors.password = "Password is required";
+    } else if (password.length > 20) {
+      errors.password = "Password is too long";
+    }
+
+    setErrors(errors);
+    setIsFormValid(Object.keys(errors).length === 0);
+  };
+
   const onSignup = async () => {
+    validateForm();
+    if (!isFormValid) {
+      return false;
+    }
+
+    setLoading(true);
+
     try {
       const response = await axios.post("../api/users/signup", user);
       if (response.data.success) {
+        setLoading(false);
         router.push("/Login");
       } else {
         setError(response.data.error);
@@ -52,6 +90,10 @@ export default function SignUp() {
               className="form-control rounded-0"
               required
             />
+
+            {errors.email && (
+              <div className="invalid-feedback d-block">{errors.email}</div>
+            )}
           </div>
 
           <div className="form-group mb-3 pt-3">
@@ -66,6 +108,10 @@ export default function SignUp() {
               className="form-control rounded-0"
               required
             />
+
+            {errors.username && (
+              <div className="invalid-feedback d-block">{errors.username}</div>
+            )}
           </div>
 
           <div className="form-group mb-3 pt-3">
@@ -80,6 +126,10 @@ export default function SignUp() {
               className="form-control rounded-0"
               required
             />
+
+            {errors.password && (
+              <div className="invalid-feedback d-block">{errors.password}</div>
+            )}
           </div>
 
           <div className="form-group mb-3 pt-3">
@@ -90,6 +140,12 @@ export default function SignUp() {
               Sign Up {loading ? "..." : ""}
             </button>
           </div>
+
+          {error !== "" ? (
+            <div className="alert alert-danger mb-3">{error}</div>
+          ) : (
+            ""
+          )}
 
           <div className="form-group mb-3 pt-3">
             <Link href="/Login">Login</Link>
