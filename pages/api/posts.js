@@ -13,7 +13,15 @@ export default async function handler(req, res) {
     case "GET":
       try {
         const posts = await Posts.find({}).sort({ createdDate: -1 });
-        res.status(200).json({ success: true, data: posts, msg: "successful" });
+
+        const rowCount = posts.length;
+
+        res.status(200).json({
+          success: true,
+          message: "Successful",
+          data: posts,
+          rowCount: rowCount,
+        });
       } catch (error) {
         res.status(400).json({ success: false });
       }

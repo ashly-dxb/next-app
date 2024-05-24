@@ -17,22 +17,29 @@ import {
 export default function ListPosts() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [rowCount, setRowCount] = useState(0);
 
   const router = useRouter();
 
-  useEffect(() => {
+  const loadList = () => {
+    setLoading(true);
+
     fetch("/api/posts")
       .then((res) => res.json())
       .then((respData) => {
         setPosts(respData.data);
+        setRowCount(respData.rowCount);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    loadList();
   }, []);
 
   const handleDelete = (postID, event) => {
     event.preventDefault();
-
-    console.log("DELETE postID:: ", postID);
+    if (!confirm("Are you sure to delete?")) return false;
 
     setLoading(true);
 
@@ -41,6 +48,7 @@ export default function ListPosts() {
     })
       .then((res) => res.json())
       .then((respData) => {
+        loadList();
         setLoading(false);
 
         router.replace("/posts/ListPosts"); // redirect to the listing page
@@ -57,7 +65,7 @@ export default function ListPosts() {
         className={`d-flex justify-content-center align-items-center bg-light ${styles.myContainer}`}
       >
         <div className="py-2 px-3 w-100">
-          <h3 className={`${styles.pageHeading}`}>Posts</h3>
+          <h3 className={`${styles.pageHeading}`}>Posts &nbsp; ({rowCount})</h3>
 
           <div
             className={`d-flex flex-md-row px-1 my-1 py-2 align-items-center rounded fw-bold`}
