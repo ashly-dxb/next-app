@@ -1,6 +1,6 @@
 .outerBody {
-    min-height: 100%;
-    /* border: 6px solid purple; */
+    /* min-height: 100%; */
+    /* border: 2px solid purple; */
 }
 
 .myContainer,
@@ -15,7 +15,7 @@
 }
 
 .myContentArea {
-    border: 2px solid rgb(233, 153, 5);
+    /* border: 2px solid rgb(233, 153, 5); */
 
     min-height: calc(100vh - 100px);
 }
@@ -69,7 +69,7 @@
     margin-top: 5px;
     margin-left: 15px;
     /* border: 1px solid orange; */
-};
+}
   
 .menuLink:hover {
     color: cyan;
@@ -77,13 +77,11 @@
     font-size: 25px;
 }
 
-
 .textEllipsis { 
     white-space: nowrap; 
     overflow: hidden; 
     text-overflow: ellipsis; 
 } 
-
 
 /* Listing tables */
 .rowStriped:nth-child(odd) { background-color: rgb(191, 221, 231); }
@@ -94,30 +92,27 @@
     /* word-wrap: break-word; */
 }
 
-
 h3.pageHeading {
     color: blue;
     /* font-family: Cambria, serif;
     font-size: 20px; */
 }
 
-.footerArea{   
+.footerArea {   
     /* position: absolute; */
     width: 100%;
     bottom: 0;
     box-sizing: border-box;
 }
 
-.footerBackground{
+.footerBackground {
     background-color: #09111a;
 }
 
-.copyrightBackground{
+.copyrightBackground {
     background-color: #080c10;
 }
 
+.telephone a:link {text-decoration: none; color: white;}
 
-a.telephone {
-    text-decoration: None;
-    color: green;
-  }
+.telephone a:hover {text-decoration: none;  color: yellow;}
