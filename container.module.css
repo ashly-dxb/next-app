@@ -21,7 +21,7 @@
 }
 
 .mainHeader, .navbar {
-    background-color: rgb(179, 153, 153);
+    /* background-color: rgb(179, 153, 153); */
     color: rgb(71, 55, 165) !important;
     padding-top: 3px;
     padding-bottom: 3px;
@@ -116,3 +116,13 @@ h3.pageHeading {
 .telephone a:link {text-decoration: none; color: white;}
 
 .telephone a:hover {text-decoration: none;  color: yellow;}
+
+
+.serviceSection {
+    text-align: justify;
+    margin: 0 0 30px;
+    background: #a6aab6fb;
+    padding: 40px 30px 26px;
+    border-radius: 12px;
+    position: relative;
+}
