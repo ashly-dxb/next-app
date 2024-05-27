@@ -114,9 +114,7 @@ h3.pageHeading {
 }
 
 .telephone a:link {text-decoration: none; color: white;}
-
 .telephone a:hover {text-decoration: none;  color: yellow;}
-
 
 .serviceSection {
     text-align: justify;
@@ -126,3 +124,4 @@ h3.pageHeading {
     border-radius: 12px;
     position: relative;
 }
+

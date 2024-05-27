@@ -15,6 +15,12 @@ export default function Navbar({ children }) {
       type: "AUTH",
     },
     {
+      id: 155,
+      link: "/ContactUs",
+      text: "Contact",
+      type: "NOT_AUTH",
+    },
+    {
       id: 2,
       link: "/posts/ListPosts",
       text: "Posts",
