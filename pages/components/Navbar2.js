@@ -51,7 +51,7 @@ export default function Navbar({ children }) {
   return (
     <div className=" flex justify-between items-center w-full px-4 text-white bg-black">
       <div className="text-2xl font-signature ml-2">
-        <a href="#" className="no-underline link-underline-black">
+        <a href="#" className="no-underline text-white">
           My App
         </a>
       </div>
@@ -64,7 +64,7 @@ export default function Navbar({ children }) {
           >
             <Link
               href={link}
-              className={`no-underline text-blue-500 hover:text-white-700 ${
+              className={`no-underline text-white hover:text-white-700 ${
                 pathname === link
                   ? " px-3 py-1 rounded text-white border-blue-500 border-1 font-semibold"
                   : ""
@@ -105,7 +105,7 @@ export default function Navbar({ children }) {
               <Link
                 href={link}
                 onClick={() => setIsOpen(!isOpen)}
-                className={`text-3xl no-underline  text-white hover:text-blue-100 w-full shrink-0 ${
+                className={`text-3xl no-underline text-white hover:text-blue-100 w-full shrink-0 ${
                   pathname === link
                     ? "bg-yellow-600 py-2 px-2 rounded text-white font-bold w-full shrink-0"
                     : ""
