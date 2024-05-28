@@ -21,6 +21,8 @@ export default function ListPosts() {
 
   const router = useRouter();
 
+  var counter = 0;
+
   const loadList = () => {
     setLoading(true);
 
@@ -61,82 +63,78 @@ export default function ListPosts() {
 
   return (
     <Layout>
-      <div
-        className={`d-flex justify-content-center align-items-center bg-light ${styles.myContainer}`}
-      >
+      <div className={`xxxxxxxxxxxxxxxx ${styles.myContainer}`}>
         <div className="py-2 px-3 w-100">
           <h3 className={`${styles.pageHeading}`}>Posts &nbsp; ({rowCount})</h3>
-
-          <div
-            className={`d-flex flex-md-row px-1 my-1 py-2 align-items-center rounded fw-bold`}
-          >
-            <div className="flex-column col-md-3 col-sm-1 col-4">Title</div>
-            <div className="flex-column col-md-4 col-sm-1 col-1 d-none d-lg-block">
-              Description
-            </div>
-            <div className="flex-column col-md-3 col-sm-1 col-4">Date</div>
-            <div className="flex-column col-md-2 col-sm-1 col-4">&nbsp;</div>
-          </div>
-
-          {isLoading ? <p>Loading...</p> : ""}
-
-          {posts.map((item, index) => {
-            return (
-              <div
-                className={`${styles.rowStriped} d-flex flex-md-row px-1 my-1 align-items-center rounded`}
-                key={index}
-              >
-                <div
-                  className={`flex-column col-md-3 col-sm-1 col-4 ${styles.textEllipsis}`}
-                >
-                  {item.title}
-                </div>
-                <div
-                  className={`flex-column col-md-4 col-sm-1 col-1 ${styles.textEllipsis} d-none d-lg-block`}
-                >
-                  {item.description}
-                </div>
-                <div className="flex-column col-md-3 col-sm-1 col-4">
-                  {moment(item.createdDate).format("YYYY-MM-DD HH:mm")}
-                </div>
-                <div className="flex-column col-md-2 col-sm-1 col-4">
-                  <Link
-                    href={{
-                      pathname: "/posts/ViewPost",
-                      query: { postID: item._id },
-                    }}
-                    className="p-2 outline-none rounded hover-shadow text-success border-0 bg-transparent"
-                    aria-label="Details"
-                    title="View Details"
-                  >
-                    <FontAwesomeIcon icon={faBook} />
-                  </Link>
-                  &nbsp;
-                  <Link
-                    href={{
-                      pathname: "/posts/EditPost",
-                      query: { postID: item._id },
-                    }}
-                    className="p-2 outline-none rounded hover-shadow text-primary border-0 bg-transparent"
-                    aria-label="Edit"
-                    title="Edit"
-                  >
-                    <FontAwesomeIcon icon={faPencilAlt} />
-                  </Link>
-                  &nbsp;
-                  <button
-                    className="p-2 outline-none rounded hover-shadow text-danger border-0 bg-transparent"
-                    aria-label="Delete"
-                    title="Delete"
-                    onClick={(event) => handleDelete(item._id, event)}
-                  >
-                    <FontAwesomeIcon icon={faTrashAlt} />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
         </div>
+
+        <div className="grid  grid-cols-4 sm:grid-cols-2 gap-0 justify-evenly">
+          <div className="bg-grey-700 w-26 h-10">Title</div>
+          <div className="bg-grey-700 w-26 h-10 sm:hidden">Description</div>
+          <div className="bg-grey-700 w-26 h-10 sm:hidden">Date</div>
+          <div className="bg-grey-700 w-26 h-10">&nbsp;</div>
+        </div>
+
+        {isLoading ? <p>Loading...</p> : ""}
+
+        {posts.map((item, index) => {
+          counter++;
+          return (
+            <div
+              key={counter}
+              className={`${styles.rowStriped} grid grid-cols-4 sm:grid-cols-2 gap-0 justify-evenly border`}
+            >
+              <div className={`bg-green-500 w-26 h-10 ${styles.textEllipsis} `}>
+                {item.title}
+              </div>
+
+              <div
+                className={`bg-green-500 w-26 h-10 ${styles.textEllipsis} sm:hidden`}
+              >
+                {item.description}
+              </div>
+
+              <div className="bg-green-500 w-26 h-10 sm:hidden">
+                {moment(item.createdDate).format("YYYY-MM-DD HH:mm")}
+              </div>
+
+              <div className="bg-green-500 w-26 h-10">
+                <Link
+                  href={{
+                    pathname: "/posts/ViewPost",
+                    query: { postID: item._id },
+                  }}
+                  className="p-2 outline-none rounded hover-shadow text-success border-0 bg-transparent"
+                  aria-label="Details"
+                  title="View Details"
+                >
+                  <FontAwesomeIcon icon={faBook} />
+                </Link>
+                &nbsp;
+                <Link
+                  href={{
+                    pathname: "/posts/EditPost",
+                    query: { postID: item._id },
+                  }}
+                  className="p-2 outline-none rounded hover-shadow text-primary border-0 bg-transparent"
+                  aria-label="Edit"
+                  title="Edit"
+                >
+                  <FontAwesomeIcon icon={faPencilAlt} />
+                </Link>
+                &nbsp;
+                <button
+                  className="p-2 outline-none rounded hover-shadow text-danger border-0 bg-transparent"
+                  aria-label="Delete"
+                  title="Delete"
+                  onClick={(event) => handleDelete(item._id, event)}
+                >
+                  <FontAwesomeIcon icon={faTrashAlt} />
+                </button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </Layout>
   );
