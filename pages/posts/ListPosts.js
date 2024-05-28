@@ -63,15 +63,17 @@ export default function ListPosts() {
 
   return (
     <Layout>
-      <div className={`xxxxxxxxxxxxxxxx ${styles.myContainer}`}>
-        <div className="py-2 px-3 w-100">
-          <h3 className={`${styles.pageHeading}`}>Posts &nbsp; ({rowCount})</h3>
+      <div
+        className={`max-w-2xl bg-white py-10 px-5 m-auto w-full mt-10 ${styles.myContainer}`}
+      >
+        <div className="grid grid-cols-2 gap-4 max-w-xl m-auto mb-8">
+          <h3 className={`${styles.pageHeading} text-2xl`}>Posts</h3>
         </div>
 
-        <div className="grid  grid-cols-4 sm:grid-cols-2 gap-0 justify-evenly">
+        <div className="grid  grid-cols-4  gap-0 justify-evenly">
           <div className="bg-grey-700 w-26 h-10">Title</div>
-          <div className="bg-grey-700 w-26 h-10 sm:hidden">Description</div>
-          <div className="bg-grey-700 w-26 h-10 sm:hidden">Date</div>
+          <div className="bg-grey-700 w-26 h-10">Description</div>
+          <div className="bg-grey-700 w-26 h-10">Date</div>
           <div className="bg-grey-700 w-26 h-10">&nbsp;</div>
         </div>
 
@@ -82,23 +84,21 @@ export default function ListPosts() {
           return (
             <div
               key={counter}
-              className={`${styles.rowStriped} grid grid-cols-4 sm:grid-cols-2 gap-0 justify-evenly border`}
+              className={`${styles.rowStriped} grid grid-cols-4 gap-0 justify-evenly border`}
             >
-              <div className={`bg-green-500 w-26 h-10 ${styles.textEllipsis} `}>
+              <div className={`w-26 h-10 ${styles.textEllipsis} `}>
                 {item.title}
               </div>
 
-              <div
-                className={`bg-green-500 w-26 h-10 ${styles.textEllipsis} sm:hidden`}
-              >
+              <div className={`w-26 h-10 ${styles.textEllipsis} `}>
                 {item.description}
               </div>
 
-              <div className="bg-green-500 w-26 h-10 sm:hidden">
+              <div className="w-26 h-10 ">
                 {moment(item.createdDate).format("YYYY-MM-DD HH:mm")}
               </div>
 
-              <div className="bg-green-500 w-26 h-10">
+              <div className="w-26 h-10">
                 <Link
                   href={{
                     pathname: "/posts/ViewPost",

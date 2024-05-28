@@ -11,6 +11,8 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.1",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "cookies-next": "^4.2.1",
