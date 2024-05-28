@@ -6,13 +6,11 @@ const ContactSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide fullname"],
     maxlength: [50, "Fullname cannot be more than 50 characters"],
-    unique: true,
   },
   email: {
     type: String,
     required: [true, "Please provide email"],
     maxlength: [50, "Email cannot be more than 50 characters"],
-    unique: true,
   },
   phone: {
     type: String,

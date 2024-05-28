@@ -6,21 +6,14 @@ import axios from "axios";
 import styles from "../container.module.css";
 import Layout from "./components/layout";
 
-import IconButton from "@material-ui/core/IconButton";
-// import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import Input from "@material-ui/core/Input";
+// import IconButton from "@material-ui/core/IconButton";
+// import InputAdornment from "@material-ui/core/InputAdornment";
+// import Visibility from "@material-ui/icons/Visibility";
+// import VisibilityOff from "@material-ui/icons/VisibilityOff";
+// import Input from "@material-ui/core/Input";
 
 export default function Login() {
   const router = useRouter();
-
-  // const [values, setValues] = useState({
-  //   email: "ashlythomas@gmail.com",
-  //   password: "",
-  //   showPassword: false,
-  // });
 
   const [credentials, setCredentials] = useState({
     email: "ashlythomas@gmail.com",
@@ -78,11 +71,11 @@ export default function Login() {
       if (response.data.success) {
         router.push("/");
       } else {
-        console.log("Login failed 1", response.data.message);
+        console.log("Login failed.", response.data.message);
         setError(response.data.message);
       }
     } catch (error) {
-      console.log("Login failed 2", error.message);
+      console.log("Login failed", error.message);
       setError(error.message);
     } finally {
       setLoading(false);
@@ -142,7 +135,7 @@ export default function Login() {
 
           <div className="col-span-2">
             <label htmlFor="password">Password</label>
-            <Input
+            <input
               id="password"
               type={credentials.showPassword ? "text" : "password"}
               value={credentials.password}
@@ -152,20 +145,6 @@ export default function Login() {
               placeholder="Enter Password"
               className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
               autoComplete="off"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {credentials.showPassword ? (
-                      <Visibility />
-                    ) : (
-                      <VisibilityOff />
-                    )}
-                  </IconButton>
-                </InputAdornment>
-              }
             />
 
             {errors.password && (

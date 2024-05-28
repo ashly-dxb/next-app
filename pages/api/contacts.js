@@ -14,13 +14,6 @@ export default async function handler(req, res) {
       try {
         const { full_name, email, phone, subject, message } = req.body;
 
-        // const user = await Contacts.findOne({ email });
-        // if (user) {
-        //   return res
-        //     .status(400)
-        //     .json({ success: false, message: "The email is already existing" });
-        // }
-
         const contReq = new Contacts({
           fullname: full_name,
           email,
@@ -37,7 +30,7 @@ export default async function handler(req, res) {
           contactReq,
         });
       } catch (error) {
-        res.status(400).json({ success: false, message: error.message });
+        res.status(200).json({ success: false, message: error.message });
       }
       break;
 

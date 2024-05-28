@@ -26,13 +26,13 @@ const ContactUs = () => {
 
     if (!contactRequest.full_name) {
       errors.full_name = "Full name is required";
-    } else if (contactRequest.full_name.length > 50) {
+    } else if (contactRequest.full_name.trim().length > 50) {
       errors.full_name = "Full name is too long";
     }
 
     if (!contactRequest.email) {
       errors.email = "Email is required";
-    } else if (contactRequest.email.length > 50) {
+    } else if (contactRequest.email.trim().length > 50) {
       errors.email = "Email is too long";
     }
 
@@ -44,13 +44,13 @@ const ContactUs = () => {
 
     if (!contactRequest.subject) {
       errors.subject = "Subject is required";
-    } else if (contactRequest.subject.length > 100) {
+    } else if (contactRequest.subject.trim().length > 100) {
       errors.subject = "Subject is too long";
     }
 
     if (!contactRequest.message) {
       errors.message = "Message is required";
-    } else if (contactRequest.message.length > 2000) {
+    } else if (contactRequest.message.trim().length > 2000) {
       errors.message = "Message is too long";
     }
 
@@ -73,10 +73,12 @@ const ContactUs = () => {
         setLoading(false);
         router.push("/Login");
       } else {
+        console.log("Signup failed.", response.data.message);
         setError(response.data.message);
       }
     } catch (error) {
       console.log("Signup failed", error.message);
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -138,27 +140,6 @@ const ContactUs = () => {
             <input
               type="text"
               className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
-              placeholder="Enter your subject"
-              name="subject"
-              value={contactRequest.subject}
-              onChange={(e) =>
-                setContactReq({ ...contactRequest, subject: e.target.value })
-              }
-              spellCheck="false"
-              data-ms-editor="true"
-            />
-
-            {errors.subject && (
-              <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-                {errors.subject}
-              </span>
-            )}
-          </div>
-
-          <div className="col-span-2 lg:col-span-1">
-            <input
-              type="text"
-              className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
               placeholder="Enter your phone"
               name="phone"
               value={contactRequest.phone}
@@ -172,6 +153,27 @@ const ContactUs = () => {
             {errors.phone && (
               <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 {errors.phone}
+              </span>
+            )}
+          </div>
+
+          <div className="col-span-2 lg:col-span-1">
+            <input
+              type="text"
+              className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
+              placeholder="Enter your subject"
+              name="subject"
+              value={contactRequest.subject}
+              onChange={(e) =>
+                setContactReq({ ...contactRequest, subject: e.target.value })
+              }
+              spellCheck="false"
+              data-ms-editor="true"
+            />
+
+            {errors.subject && (
+              <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                {errors.subject}
               </span>
             )}
           </div>
@@ -204,8 +206,6 @@ const ContactUs = () => {
             >
               Send {loading ? "..." : ""}
             </button>
-
-            <div className="response">xxx</div>
           </div>
 
           {error !== "" ? (
