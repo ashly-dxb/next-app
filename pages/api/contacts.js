@@ -82,7 +82,7 @@ export default async function handler(req, res) {
       } catch (error) {
         res.status(400).json({ success: false });
       }
-      // redirect(`/contacts/ListPosts`); // Navigate to the listing page from ServerSide itself
+      // redirect(`/contacts/ListAll`); // Navigate to the listing page from ServerSide itself
       break;
 
     default:

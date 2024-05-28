@@ -1,6 +1,6 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "../container.module.css";
 import Link from "next/link";
+import styles from "../container.module.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Custom404() {
   return (

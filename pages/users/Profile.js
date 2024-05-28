@@ -1,10 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../../container.module.css";
 import Layout from "../components/layout";
 
-export default function ProfilePage() {
+export default function Profile() {
   const [data, setData] = useState("nothing");
 
   const getUserDetails = async () => {
@@ -13,24 +13,31 @@ export default function ProfilePage() {
     if (response.data) {
       setData(response.data.data._id);
     } else {
-      setData({ error: "SOme error" });
+      setData({ error: "Some error" });
     }
   };
 
   return (
     <Layout>
       <div
-        className={`d-flex justify-content-center align-items-center bg-light ${styles.myContainer}`}
+        className={`max-w-2xl bg-white py-10 px-5 m-auto w-full mt-10 ${styles.myContainer}`}
       >
-        <div className="py-2 px-3 col-lg-6 col-md-8 col-12">
-          <h3 className={`${styles.pageHeading}`}>Profile</h3>
+        <div className="grid grid-cols-2 gap-4 max-w-xl m-auto mb-8">
+          <h3 className={`${styles.pageHeading} text-2xl`}>Profile</h3>
+        </div>
 
-          <div className="form-group mb-3 pt-3">
+        <div className="grid grid-cols-2 gap-4 max-w-xl m-auto">
+          <div className="col-span-2">
             <p>{data === "nothing" ? "No Data " : { data }}</p>
           </div>
 
-          <div className="form-group mb-3 pt-3">
-            <button onClick={getUserDetails}>Details</button>
+          <div className="col-span-2">
+            <button
+              onClick={getUserDetails}
+              className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32"
+            >
+              Details
+            </button>
           </div>
         </div>
       </div>

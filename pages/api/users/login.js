@@ -32,13 +32,15 @@ export default async function handler(req, res) {
 
         if (!user) {
           res
-            .status(400)
+            .status(200)
             .json({ success: false, message: "User does not exist" });
         }
 
         const validPassword = await bcryptjs.compare(password, user.password);
         if (!validPassword) {
-          res.status(400).json({ success: false, message: "Invalid password" });
+          res
+            .status(200)
+            .json({ success: false, message: "Invalid email/password" });
         }
 
         const tokenData = {

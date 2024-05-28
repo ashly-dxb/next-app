@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../container.module.css";
 import Layout from "./components/layout";
 
@@ -68,6 +68,7 @@ const ContactUs = () => {
 
     try {
       const response = await axios.post("../api/contacts", contactRequest);
+
       if (response.data.success) {
         setLoading(false);
         router.push("/Login");
@@ -83,19 +84,19 @@ const ContactUs = () => {
 
   return (
     <Layout>
-      <div className={`container ${styles.myContainer}`}>
-        <div className="row">
-          <div className="col-lg-6 col-md-6 col-sm-12 col-12 mb-3">
-            <h3>Contact Us</h3>
-          </div>
+      <div
+        className={`max-w-2xl bg-white py-10 px-5 m-auto w-full mt-10 ${styles.myContainer}`}
+      >
+        <div className="grid grid-cols-2 gap-4 max-w-xl m-auto mb-8">
+          <h3 className={`${styles.pageHeading} text-2xl`}>Contact Us</h3>
         </div>
 
-        <div className="row">
-          <div className="col-lg-6 col-md-6 col-sm-12 col-12 mb-3">
+        <div className="grid grid-cols-2 gap-4 max-w-xl m-auto">
+          <div className="col-span-2 lg:col-span-1">
             <input
               type="text"
-              className="form-control form-control-lg rounded"
-              placeholder="Enter Your Full Name"
+              className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
+              placeholder="Enter your Full Name"
               name="full_name"
               value={contactRequest.full_name}
               onChange={(e) =>
@@ -106,14 +107,17 @@ const ContactUs = () => {
             />
 
             {errors.full_name && (
-              <div className="invalid-feedback d-block">{errors.full_name}</div>
+              <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                {errors.full_name}
+              </span>
             )}
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-12 mb-3">
+
+          <div className="col-span-2 lg:col-span-1">
             <input
               type="text"
-              className="form-control form-control-lg rounded"
-              placeholder="Enter Your Email"
+              className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
+              placeholder="Enter your Email"
               name="email"
               value={contactRequest.email}
               onChange={(e) =>
@@ -124,15 +128,17 @@ const ContactUs = () => {
             />
 
             {errors.email && (
-              <div className="invalid-feedback d-block">{errors.email}</div>
+              <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                {errors.email}
+              </span>
             )}
           </div>
 
-          <div className="col-lg-6 col-md-6 col-sm-12 col-12 mb-3">
+          <div className="col-span-2 lg:col-span-1">
             <input
               type="text"
-              className="form-control form-control-lg rounded"
-              placeholder="Enter Your Subject"
+              className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
+              placeholder="Enter your subject"
               name="subject"
               value={contactRequest.subject}
               onChange={(e) =>
@@ -143,15 +149,17 @@ const ContactUs = () => {
             />
 
             {errors.subject && (
-              <div className="invalid-feedback d-block">{errors.subject}</div>
+              <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                {errors.subject}
+              </span>
             )}
           </div>
 
-          <div className="col-lg-6 col-md-6 col-sm-12 col-12 mb-3">
+          <div className="col-span-2 lg:col-span-1">
             <input
               type="text"
-              className="form-control form-control-lg rounded"
-              placeholder="Enter Your Phone"
+              className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
+              placeholder="Enter your phone"
               name="phone"
               value={contactRequest.phone}
               onChange={(e) =>
@@ -162,14 +170,16 @@ const ContactUs = () => {
             />
 
             {errors.phone && (
-              <div className="invalid-feedback d-block">{errors.phone}</div>
+              <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                {errors.phone}
+              </span>
             )}
           </div>
 
-          <div className="col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
+          <div className="col-span-2">
             <textarea
-              className="form-control form-control-lg rounded"
-              placeholder="Enter Your Message"
+              className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
+              placeholder="Enter your message"
               name="message"
               value={contactRequest.message}
               onChange={(e) =>
@@ -181,20 +191,27 @@ const ContactUs = () => {
             ></textarea>
 
             {errors.message && (
-              <div className="invalid-feedback d-block">{errors.message}</div>
+              <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                {errors.message}
+              </span>
             )}
           </div>
 
-          <div className="col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
-            <button onClick={onSubmitForm} className="btn btn-primary  w-100 ">
+          <div className="col-span-2 text-right">
+            <button
+              onClick={onSubmitForm}
+              className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32"
+            >
               Send {loading ? "..." : ""}
             </button>
 
-            <div className="response"></div>
+            <div className="response">xxx</div>
           </div>
 
           {error !== "" ? (
-            <div className="alert alert-danger mb-3">{error}</div>
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 mb-3 rounded relative">
+              {error}
+            </div>
           ) : (
             ""
           )}

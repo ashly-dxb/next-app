@@ -1,6 +1,6 @@
 // import Head from "next/head";
 import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../../container.module.css";
 import Layout from "../components/layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -72,13 +72,15 @@ const CreatePost = () => {
   return (
     <Layout>
       <div
-        className={`d-flex justify-content-center align-items-center bg-light ${styles.myContainer}`}
+        className={`max-w-2xl bg-white py-10 px-5 m-auto w-full mt-10 ${styles.myContainer}`}
       >
-        <div className="py-2 px-3 col-lg-6 col-md-8 col-12">
-          <h3 className={`${styles.pageHeading}`}>Add Post</h3>
+        <div className="grid grid-cols-2 gap-4 max-w-xl m-auto mb-8">
+          <h3 className={`${styles.pageHeading} text-2xl`}>Add Post</h3>
+        </div>
 
-          <form id="myForm" method="post">
-            <div className="form-group mb-3 pt-3">
+        <form id="myForm" method="post">
+          <div className="grid grid-cols-2 gap-4 max-w-xl m-auto">
+            <div className="col-span-2">
               <label htmlFor="title">Title</label>
 
               <input
@@ -87,17 +89,19 @@ const CreatePost = () => {
                 id="title"
                 placeholder="Enter Title"
                 autoComplete="off"
-                className="form-control rounded-0"
+                className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
                 required
                 onChange={(e) => setTitle(e.target.value)}
               />
 
               {errors.title && (
-                <div className="invalid-feedback d-block">{errors.title}</div>
+                <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                  {errors.title}
+                </span>
               )}
             </div>
 
-            <div className="form-group mb-3 pt-3">
+            <div className="col-span-2">
               <label htmlFor="description">Description</label>
 
               <textarea
@@ -105,22 +109,22 @@ const CreatePost = () => {
                 id="description"
                 placeholder="Enter description"
                 autoComplete="off"
-                className="form-control rounded-0"
-                rows="5"
+                className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
+                rows="8"
                 required
                 onChange={(e) => setDescription(e.target.value)}
               ></textarea>
 
               {errors.description && (
-                <div className="invalid-feedback d-block">
+                <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                   {errors.description}
-                </div>
+                </span>
               )}
             </div>
 
-            <div className="form-group mb-3 pt-3">
+            <div className="col-span-2 text-right">
               <button
-                className="btn btn-primary w-100 rounded-0 "
+                className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32 border-2 border-solid border-red-400"
                 onClick={handleSubmit}
               >
                 <FontAwesomeIcon
@@ -129,11 +133,11 @@ const CreatePost = () => {
                   alt="Refresh"
                   title="Refresh"
                 />
-                Add Post
+                Add
               </button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </Layout>
   );

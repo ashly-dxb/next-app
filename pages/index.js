@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import movieData from "../data";
 import styles from "../container.module.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 import Layout from "./components/layout";
 

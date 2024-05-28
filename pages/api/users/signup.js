@@ -17,12 +17,16 @@ export default async function handler(req, res) {
         const user = await Users.findOne({ email });
         if (user) {
           return res
-            .status(400)
+            .status(200)
             .json({ success: false, message: "The email is already existing" });
         }
 
         const salt = await bcryptjs.genSalt(10);
         const hashedPassword = await bcryptjs.hash(password, salt);
+
+        console.log("username", username);
+        console.log("email", email);
+        console.log("password", password);
 
         const newUser = new Users({
           username,

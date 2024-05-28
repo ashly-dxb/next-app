@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../../container.module.css";
 import Layout from "../components/layout";
 
@@ -44,11 +44,15 @@ export default function SignUp() {
     }
 
     setErrors(errors);
+
+    console.log("Signup val", Object.keys(errors).length === 0);
+    console.log("Signup errors", errors);
     setIsFormValid(Object.keys(errors).length === 0);
   };
 
   const onSignup = async () => {
     validateForm();
+
     if (!isFormValid) {
       return false;
     }
@@ -73,12 +77,14 @@ export default function SignUp() {
   return (
     <Layout>
       <div
-        className={`d-flex justify-content-center align-items-center bg-light ${styles.myContainer}`}
+        className={`max-w-2xl bg-white py-10 px-5 m-auto w-full mt-10 ${styles.myContainer}`}
       >
-        <div className="py-2 px-3 col-lg-6 col-md-8 col-12">
-          <h3 className={`${styles.pageHeading}`}>Sign Up</h3>
+        <div className="grid grid-cols-2 gap-4 max-w-xl m-auto mb-8">
+          <h3 className={`${styles.pageHeading} text-2xl`}>Sign Up</h3>
+        </div>
 
-          <div className="form-group mb-3 pt-3">
+        <div className="grid grid-cols-2 gap-4 max-w-xl m-auto">
+          <div className="col-span-2">
             <label htmlFor="email">Email</label>
             <input
               id="email"
@@ -87,16 +93,18 @@ export default function SignUp() {
               onChange={(e) => setUser({ ...user, email: e.target.value })}
               placeholder="Enter Email"
               autoComplete="off"
-              className="form-control rounded-0"
+              className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
               required
             />
 
             {errors.email && (
-              <div className="invalid-feedback d-block">{errors.email}</div>
+              <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                {errors.email}
+              </span>
             )}
           </div>
 
-          <div className="form-group mb-3 pt-3">
+          <div className="col-span-2">
             <label htmlFor="username">Username</label>
             <input
               id="username"
@@ -105,16 +113,18 @@ export default function SignUp() {
               onChange={(e) => setUser({ ...user, username: e.target.value })}
               placeholder="Enter Username"
               autoComplete="off"
-              className="form-control rounded-0"
+              className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
               required
             />
 
             {errors.username && (
-              <div className="invalid-feedback d-block">{errors.username}</div>
+              <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                {errors.username}
+              </span>
             )}
           </div>
 
-          <div className="form-group mb-3 pt-3">
+          <div className="col-span-2">
             <label htmlFor="password">Password</label>
             <input
               id="password"
@@ -123,31 +133,34 @@ export default function SignUp() {
               onChange={(e) => setUser({ ...user, password: e.target.value })}
               placeholder="Enter Password"
               autoComplete="off"
-              className="form-control rounded-0"
+              className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
               required
             />
 
             {errors.password && (
-              <div className="invalid-feedback d-block">{errors.password}</div>
+              <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                {errors.password}
+              </span>
             )}
           </div>
 
-          <div className="form-group mb-3 pt-3">
+          <div className="col-span-2 text-right">
+            {error !== "" ? (
+              <span className="text-left bg-red-100 border border-red-400 text-red-700 px-4 py-3 mx-2 mb-3 rounded relative">
+                {error}
+              </span>
+            ) : (
+              ""
+            )}
             <button
               onClick={onSignup}
-              className="btn btn-primary w-100 rounded-0 "
+              className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32"
             >
               Sign Up {loading ? "..." : ""}
             </button>
           </div>
 
-          {error !== "" ? (
-            <div className="alert alert-danger mb-3">{error}</div>
-          ) : (
-            ""
-          )}
-
-          <div className="form-group mb-3 pt-3">
+          <div className="col-span-2">
             <Link href="/Login">Login</Link>
           </div>
         </div>

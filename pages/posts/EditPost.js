@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../../container.module.css";
 import Layout from "../components/layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,12 +19,8 @@ const UpdatePost = () => {
 
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
-
   const [isLoading, setLoading] = useState(false);
-  //   const [data, setData] = useState({});
-
   const router = useRouter();
-
   const searchParams = useSearchParams();
 
   const validateForm = () => {
@@ -107,15 +103,17 @@ const UpdatePost = () => {
   return (
     <Layout>
       <div
-        className={`d-flex justify-content-center align-items-center bg-light ${styles.myContainer}`}
+        className={`max-w-2xl bg-white py-10 px-5 m-auto w-full mt-10 ${styles.myContainer}`}
       >
-        <div className="py-2 px-3 col-lg-6 col-md-8 col-12">
-          <h3 className={`${styles.pageHeading}`}>Modify Post</h3>
+        <div className="grid grid-cols-2 gap-4 max-w-xl m-auto mb-8">
+          <h3 className={`${styles.pageHeading} text-2xl`}>Modify Post</h3>
+        </div>
 
-          <form id="myForm" method="post" onSubmit={handleSubmit}>
-            <input type="hidden" name="postID" value={postID} />
+        <form id="myForm" method="post" onSubmit={handleSubmit}>
+          <input type="hidden" name="postID" value={postID} />
 
-            <div className="form-group mb-3 pt-3">
+          <div className="grid grid-cols-2 gap-4 max-w-xl m-auto">
+            <div className="col-span-2">
               <label htmlFor="title">Title</label>
 
               <input
@@ -124,7 +122,7 @@ const UpdatePost = () => {
                 id="title"
                 placeholder="Enter Title"
                 autoComplete="off"
-                className="form-control rounded-0"
+                className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
                 required
                 value={formData.title}
                 onChange={(e) =>
@@ -137,7 +135,7 @@ const UpdatePost = () => {
               )}
             </div>
 
-            <div className="form-group mb-3 pt-3">
+            <div className="col-span-2">
               <label htmlFor="description">Description</label>
 
               <textarea
@@ -145,8 +143,8 @@ const UpdatePost = () => {
                 id="description"
                 placeholder="Enter description"
                 autoComplete="off"
-                className="form-control rounded-0"
-                rows="5"
+                className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
+                rows="8"
                 required
                 value={formData.description}
                 onChange={(e) =>
@@ -161,10 +159,10 @@ const UpdatePost = () => {
               )}
             </div>
 
-            <div className="form-group mb-3 pt-3">
+            <div className="col-span-2 text-right">
               <button
                 type="submit"
-                className="btn btn-primary w-25 rounded-0 mr-5"
+                className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32 border-2 border-solid border-red-400"
               >
                 <FontAwesomeIcon
                   icon={isLoading ? faSpinner : faRefresh}
@@ -172,19 +170,19 @@ const UpdatePost = () => {
                   alt="Refresh"
                   title="Refresh"
                 />
-                Update Post
+                Update
               </button>
 
               <button
                 type="button"
-                className="btn btn-secondary rounded-0 "
+                className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32 border-2 border-solid border-red-400"
                 onClick={() => router.back()}
               >
                 Back
               </button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </Layout>
   );
