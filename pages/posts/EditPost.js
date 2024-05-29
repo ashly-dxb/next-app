@@ -131,7 +131,9 @@ const UpdatePost = () => {
               />
 
               {errors.title && (
-                <div className="invalid-feedback d-block">{errors.title}</div>
+                <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                  {errors.title}
+                </span>
               )}
             </div>
 
@@ -153,16 +155,16 @@ const UpdatePost = () => {
               ></textarea>
 
               {errors.description && (
-                <div className="invalid-feedback d-block">
+                <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                   {errors.description}
-                </div>
+                </span>
               )}
             </div>
 
             <div className="col-span-2 text-right">
               <button
                 type="submit"
-                className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32 border-2 border-solid border-red-400"
+                className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32 "
               >
                 <FontAwesomeIcon
                   icon={isLoading ? faSpinner : faRefresh}
@@ -175,7 +177,7 @@ const UpdatePost = () => {
 
               <button
                 type="button"
-                className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32 border-2 border-solid border-red-400"
+                className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32 "
                 onClick={() => router.back()}
               >
                 Back

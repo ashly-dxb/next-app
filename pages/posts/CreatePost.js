@@ -36,10 +36,10 @@ const CreatePost = () => {
     setIsFormValid(Object.keys(errors).length === 0);
   };
 
-  const handleSubmit = async (event) => {
-    // event.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-    await validateForm();
+    validateForm();
     if (!isFormValid) {
       return false;
     }
@@ -78,7 +78,7 @@ const CreatePost = () => {
           <h3 className={`${styles.pageHeading} text-2xl`}>Add Post</h3>
         </div>
 
-        <form id="myForm" method="post">
+        <form id="myForm" method="post" onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-4 max-w-xl m-auto">
             <div className="col-span-2">
               <label htmlFor="title">Title</label>
@@ -124,8 +124,8 @@ const CreatePost = () => {
 
             <div className="col-span-2 text-right">
               <button
-                className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32 border-2 border-solid border-red-400"
-                onClick={handleSubmit}
+                type="submit"
+                className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32"
               >
                 <FontAwesomeIcon
                   icon={isLoading ? faSpinner : faRefresh}

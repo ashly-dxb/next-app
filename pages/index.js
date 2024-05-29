@@ -14,35 +14,24 @@ export async function getServerSideProps() {
   };
 }
 
-const heading = {
-  color: "blue",
-  padding: "3px",
-  fontFamily: "Verdana",
-  fontSize: "17px",
-  marginTop: "5px",
-  marginLeft: "15px",
-  border: "2px solid purple",
-  backgroundColor: "grey",
-};
-
 const Home = ({ allMovies }) => {
   return (
     <Layout>
       <div
-        className={`d-flex justify-content-center align-items-center bg-light ${styles.myContainer}`}
+        className={`bg-white py-10 px-5 m-auto w-full mt-10 ${styles.myContainer}`}
       >
-        <div className="row">
-          <div className="agy-heading-wrapper full-width">
-            <div className="col-md-12 text-center">
-              <h2>Fulfill Expectations!</h2>
-            </div>
-          </div>
+        <div className="flex flex-wrap border m-auto mb-3">
+          <h3 className={`${styles.pageHeading} text-2xl`}>
+            Fulfill Your Expectations
+          </h3>
+        </div>
 
-          <div className="col-md-4">
+        <div className="flex flex-wrap border m-auto mr-3">
+          <div className="w-full xxx md:w-1/2 lg:w-1/3 mr-1 ">
             <div className={`${styles.serviceSection}`} data-wow-delay="0.1s">
-              <div className="agy-service-text">
+              <div className="xxx-text">
                 <h4>
-                  <span className="xxxx" href="/react-js-developer-in-mumbai/">
+                  <span className="xxxx" href="/reactjs-developer-dubai/">
                     Web Designing
                   </span>
                 </h4>
@@ -59,11 +48,12 @@ const Home = ({ allMovies }) => {
               </div>
             </div>
           </div>
-          <div className="col-md-4">
+
+          <div className="w-full xxx md:w-1/2 lg:w-1/3 mr-1 ">
             <div className={`${styles.serviceSection}`} data-wow-delay="0.1s">
-              <div className="agy-service-text">
+              <div className="xxx-text">
                 <h4>
-                  <span className="xxxx" href="/react-js-developer-in-mumbai/">
+                  <span className="xxxx" href="/php-developer-dubai/">
                     Web Development
                   </span>
                 </h4>
@@ -80,11 +70,32 @@ const Home = ({ allMovies }) => {
               </div>
             </div>
           </div>
-          <div className="col-md-4">
+
+          <div className="w-full xxx md:w-1/2 lg:w-1/3 mr-1 ">
             <div className={`${styles.serviceSection}`} data-wow-delay="0.1s">
-              <div className="agy-service-text">
+              <div className="xxx-text">
                 <h4>
-                  <span className="xxxx" href="/react-js-developer-in-mumbai/">
+                  <span className="xxxx" href="/nodejs-developer-dubai/">
+                    Digital Marketing
+                  </span>
+                </h4>
+                <p>
+                  We have extensive knowledge in every pertinent sector and are
+                  experts in the field of digital marketing. We multitask to
+                  guarantee your business has a portion of digital excellence
+                  through social media management, mobile advertising, SEO, and
+                  content management. Our solutions yield revolutionary
+                  development and a well-organized management structure.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full xxx md:w-1/2 lg:w-1/3 mr-1 ">
+            <div className={`${styles.serviceSection}`} data-wow-delay="0.1s">
+              <div className="xxx-text">
+                <h4>
+                  <span className="xxxx" href="/nodejs-developer-dubai/">
                     Digital Marketing
                   </span>
                 </h4>
@@ -104,4 +115,5 @@ const Home = ({ allMovies }) => {
     </Layout>
   );
 };
+
 export default Home;

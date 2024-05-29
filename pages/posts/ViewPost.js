@@ -38,38 +38,45 @@ export default function ViewPost() {
   return (
     <Layout>
       <div
-        className={`d-flex justify-content-center align-items-center bg-light ${styles.myContainer}`}
+        className={`bg-white py-10 px-5 m-auto w-full mt-10 ${styles.myContainer}`}
       >
-        <div className="py-2 px-3 w-100">
-          <h3 className={`${styles.pageHeading}`}>Post Details</h3>
-
-          <div className="row mb-2 py-2">
-            <div className="col-md-4 fw-bold">Title</div>
-            <div className="col-md-8">{data.title}</div>
-          </div>
-
-          <div className="row mb-2 py-2">
-            <div className="col-md-4 fw-bold">Description</div>
-            <div className={`col-md-8 ${styles.lineBreaks}`}>
-              {data.description}
-            </div>
-          </div>
-
-          <div className="row mb-2 py-2">
-            <div className="col-md-4 fw-bold">Created date</div>
-            <div className="col-md-8">
-              {moment(data.createdDate).format("YYYY-MM-DD HH:mm")}
-            </div>
-          </div>
-
-          <button
-            type="button"
-            className="btn btn-secondary rounded-0 "
-            onClick={() => router.back()}
-          >
-            Go back
-          </button>
+        <div className="flex flex-wrap m-auto mb-8">
+          <h3 className={`${styles.pageHeading} text-2xl`}>Post Details</h3>
         </div>
+
+        <div className="flex flex-wrap  m-auto mr-3 mb-4">
+          <div className="w-full xxx md:w-1/2 lg:w-1/3 mr-1 font-bold">
+            Title
+          </div>
+          <div className="w-full xxx md:w-1/2 lg:w-1/3 mr-1 ">{data.title}</div>
+        </div>
+
+        <div className="flex flex-wrap  m-auto mr-3 mb-4">
+          <div className="w-full xxx md:w-1/2 lg:w-1/3 mr-1 font-bold">
+            Description
+          </div>
+          <div
+            className={`w-full xxx md:w-1/2 lg:w-1/3 mr-1 ${styles.lineBreaks} `}
+          >
+            {data.description}
+          </div>
+        </div>
+
+        <div className="flex flex-wrap  m-auto mr-3 mb-4">
+          <div className="w-full xxx md:w-1/2 lg:w-1/3 mr-1 font-bold">
+            Posted on
+          </div>
+          <div className="w-full xxx md:w-1/2 lg:w-1/3 mr-1 ">
+            {moment(data.createdDate).format("YYYY-MM-DD HH:mm")}
+          </div>
+        </div>
+
+        <button
+          onClick={() => router.back()}
+          className="py-2 px-4 bg-gray-700 text-white font-bold sm:w-32 border"
+        >
+          Back
+        </button>
       </div>
     </Layout>
   );

@@ -67,7 +67,9 @@ export default function ListPosts() {
         className={`bg-white py-10 px-5 m-auto w-full mt-10 ${styles.myContainer}`}
       >
         <div className="flex m-auto mb-8">
-          <h3 className={`${styles.pageHeading} text-2xl`}>Posts</h3>
+          <h3 className={`${styles.pageHeading} text-2xl`}>
+            Posts ({rowCount})
+          </h3>
         </div>
 
         <div className="flex border h-25">

@@ -58,7 +58,7 @@ export default function Navbar({ children }) {
     <div className=" flex justify-between items-center w-full px-4 text-white bg-black">
       <div className="text-2xl font-signature ml-2">
         <a href="#" className="no-underline text-white">
-          My App
+          Soft-One-Tech
         </a>
       </div>
 
@@ -102,11 +102,11 @@ export default function Navbar({ children }) {
       </div>
 
       {isOpen && (
-        <ul className="flex flex-col justify-top items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-500">
+        <ul className="flex flex-col justify-top items-center absolute top-0 left-0 px-2 w-full h-screen bg-gradient-to-b from-black to-gray-500">
           {links.map(({ id, link, text }) => (
             <li
               key={id}
-              className="flex flex-row py-6 sm:mt-0 w-full shrink-0 hover:bg-gray-900"
+              className="flex flex-row pl-3 py-6 sm:mt-0 w-full shrink-0 hover:bg-gray-900"
             >
               <Link
                 href={link}
