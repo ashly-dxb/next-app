@@ -16,7 +16,7 @@ export default function Login() {
   const router = useRouter();
 
   const [credentials, setCredentials] = useState({
-    email: "ashlythomas@gmail.com",
+    email: "xxxx@gmail.com",
     password: "",
     showPassword: false,
   });
