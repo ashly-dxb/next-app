@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import styles from "../../container.module.css";
+// import styles from "../../container.module.css";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Navbar({ children }) {
@@ -58,7 +58,7 @@ export default function Navbar({ children }) {
     <div className=" flex justify-between items-center w-full px-4 text-white bg-black">
       <div className="text-2xl font-signature ml-2">
         <a href="#" className="no-underline text-white">
-          Soft-One-Tech
+          My-Tech-Blog
         </a>
       </div>
 
