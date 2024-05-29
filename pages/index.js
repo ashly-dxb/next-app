@@ -20,7 +20,7 @@ const Home = ({ allMovies }) => {
       <div
         className={`bg-white py-10 px-5 m-auto w-full mt-10 ${styles.myContainer}`}
       >
-        <div className="flex flex-wrap border m-auto mb-3">
+        {/* <div className="flex flex-wrap border m-auto mb-3">
           <h3 className={`${styles.pageHeading} text-2xl`}>
             Fulfill Your Expectations
           </h3>
@@ -90,24 +90,42 @@ const Home = ({ allMovies }) => {
               </div>
             </div>
           </div>
+        </div> */}
 
-          <div className="w-full xxx md:w-1/2 lg:w-1/3 mr-1 ">
-            <div className={`${styles.serviceSection}`} data-wow-delay="0.1s">
-              <div className="xxx-text">
-                <h4>
-                  <span className="xxxx" href="/nodejs-developer-dubai/">
-                    Digital Marketing
-                  </span>
-                </h4>
-                <p>
-                  We have extensive knowledge in every pertinent sector and are
-                  experts in the field of digital marketing. We multitask to
-                  guarantee your business has a portion of digital excellence
-                  through social media management, mobile advertising, SEO, and
-                  content management. Our solutions yield revolutionary
-                  development and a well-organized management structure.
-                </p>
-              </div>
+        <div className="flex flex-wrap justify-center">
+          <div className="m-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+            <div className="bg-gray-700 rounded-lg shadow p-4">
+              <h3 className="text-white text-xl font-semibold">Card 1</h3>
+              <p className="text-white">
+                Card content goes here. Card content goes here. Card content
+                goes here. Card content goes here. Card content goes here. Card
+                content goes here. Card content goes here. Card content goes
+                here. Card content goes here.{" "}
+              </p>
+            </div>
+          </div>
+          <div className="m-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+            <div className="bg-gray-700 rounded-lg shadow p-4">
+              <h3 className=" text-white text-xl font-semibold">Card 2</h3>
+              <p className="text-white">
+                Card content goes here. Card content goes here. Card content
+                goes here. Card content goes here. Card content goes here. Card
+                content goes here. Card content goes here. Card content goes
+                here. Card content goes here. Card content goes here. Card
+                content goes here. Card content goes here.{" "}
+              </p>
+            </div>
+          </div>
+          <div className="m-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+            <div className="bg-gray-700 rounded-lg shadow p-4">
+              <h3 className="text-white text-xl font-semibold">Card 3</h3>
+              <p className="text-white">
+                Card content goes here. Card content goes here. Card content
+                goes here. Card content goes here. Card content goes here. Card
+                content goes here. Card content goes here. Card content goes
+                here. Card content goes here. Card content goes here. Card
+                content goes here.{" "}
+              </p>
             </div>
           </div>
         </div>
