@@ -112,13 +112,13 @@ export default function Login() {
               onChange={(e) =>
                 setCredentials({ ...credentials, email: e.target.value })
               }
-              placeholder="Enter Email"
+              placeholder="Enter your email"
               className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
               autoComplete="off"
             />
 
-            {true ? (
-              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            {false ? (
+              <span className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                 <svg
                   className="h-5 w-5 text-red-500"
                   fill="currentColor"
@@ -130,7 +130,7 @@ export default function Login() {
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
+              </span>
             ) : (
               ""
             )}
@@ -151,12 +151,12 @@ export default function Login() {
               onChange={(e) =>
                 setCredentials({ ...credentials, password: e.target.value })
               }
-              placeholder="Enter Password"
+              placeholder="Enter your password"
               className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
               autoComplete="off"
             />
-            <span class="password-toggle-icon">
-              <i class="fas fa-eye">xb</i>
+            <span className="password-toggle-icon">
+              <i className="fas fa-eye"></i>
             </span>
 
             {errors.password && (

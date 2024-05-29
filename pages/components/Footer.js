@@ -92,7 +92,7 @@ export default function Footer({ children }) {
                   <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
                 </svg>
               </span>
-              <a href="mailto:ashlythomas@gmail.com">ashlythomas@gmail.com</a>
+              <a href="mailto:myuser@gmail.com">myuser@gmail.com</a>
             </p>
             <p className="mb-4 flex items-center justify-center md:justify-start">
               <span className="me-3 [&>svg]:h-5 [&>svg]:w-5">
@@ -109,7 +109,7 @@ export default function Footer({ children }) {
                 </svg>
               </span>
               <span className={`${styles.telephone}`}>
-                <a href="tel:+971-508570803">(+971)-508570803</a>
+                <a href="tel:+91-123456789">(+91)-123456789</a>
               </span>
             </p>
           </div>
