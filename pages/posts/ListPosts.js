@@ -64,17 +64,17 @@ export default function ListPosts() {
   return (
     <Layout>
       <div
-        className={`max-w-2xl bg-white py-10 px-5 m-auto w-full mt-10 ${styles.myContainer}`}
+        className={`bg-white py-10 px-5 m-auto w-full mt-10 ${styles.myContainer}`}
       >
-        <div className="grid grid-cols-2 gap-4 max-w-xl m-auto mb-8">
+        <div className="flex m-auto mb-8">
           <h3 className={`${styles.pageHeading} text-2xl`}>Posts</h3>
         </div>
 
-        <div className="grid  grid-cols-4  gap-0 justify-evenly">
-          <div className="bg-grey-700 w-26 h-10">Title</div>
-          <div className="bg-grey-700 w-26 h-10">Description</div>
-          <div className="bg-grey-700 w-26 h-10">Date</div>
-          <div className="bg-grey-700 w-26 h-10">&nbsp;</div>
+        <div className="flex border h-25">
+          <div className="w-[30%] ">Title</div>
+          <div className="w-[30%] max-md:hidden">Description</div>
+          <div className="w-[20%] max-md:hidden">Date</div>
+          <div className="w-[20%] ">&nbsp;</div>
         </div>
 
         {isLoading ? <p>Loading...</p> : ""}
@@ -82,23 +82,20 @@ export default function ListPosts() {
         {posts.map((item, index) => {
           counter++;
           return (
-            <div
-              key={counter}
-              className={`${styles.rowStriped} grid grid-cols-4 gap-0 justify-evenly border`}
-            >
-              <div className={`w-26 h-10 ${styles.textEllipsis} `}>
+            <div key={counter} className={`${styles.rowStriped} flex border`}>
+              <div className={`w-[30%] ${styles.textEllipsis} `}>
                 {item.title}
               </div>
 
-              <div className={`w-26 h-10 ${styles.textEllipsis} `}>
+              <div className={`w-[30%] ${styles.textEllipsis} max-md:hidden`}>
                 {item.description}
               </div>
 
-              <div className="w-26 h-10 ">
+              <div className="w-[20%] max-md:hidden">
                 {moment(item.createdDate).format("YYYY-MM-DD HH:mm")}
               </div>
 
-              <div className="w-26 h-10">
+              <div className="w-[20%]">
                 <Link
                   href={{
                     pathname: "/posts/ViewPost",

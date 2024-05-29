@@ -31,15 +31,24 @@ export default function Login() {
 
   axios.defaults.withCredentials = true;
 
-  const handleClickShowPassword = () => {
-    setCredentials({
-      ...credentials,
-      showPassword: !credentials.showPassword,
-    });
-  };
+  // const handleClickShowPassword = () => {
+  //   setCredentials({
+  //     ...credentials,
+  //     showPassword: !credentials.showPassword,
+  //   });
+  // };
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
+  // const handleMouseDownPassword = (event) => {
+  //   event.preventDefault();
+  // };
+
+  const handleShowHidePassword = () => {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
   };
 
   const validateForm = () => {
@@ -146,6 +155,9 @@ export default function Login() {
               className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
               autoComplete="off"
             />
+            <span class="password-toggle-icon">
+              <i class="fas fa-eye">xb</i>
+            </span>
 
             {errors.password && (
               <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
