@@ -1,4 +1,3 @@
-// import Head from "next/head";
 import { useState } from "react";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../../container.module.css";
@@ -127,13 +126,13 @@ const CreatePost = () => {
                 type="submit"
                 className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32"
               >
+                Add &nbsp;
                 <FontAwesomeIcon
                   icon={isLoading ? faSpinner : faRefresh}
                   className="fa spinner"
                   alt="Refresh"
                   title="Refresh"
                 />
-                Add
               </button>
             </div>
           </div>

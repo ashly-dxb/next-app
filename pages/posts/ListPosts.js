@@ -81,59 +81,60 @@ export default function ListPosts() {
 
         {isLoading ? <p>Loading...</p> : ""}
 
-        {posts.map((item, index) => {
-          counter++;
-          return (
-            <div key={counter} className={`${styles.rowStriped} flex border`}>
-              <div className={`w-[30%] ${styles.textEllipsis} `}>
-                {item.title}
-              </div>
+        {posts &&
+          posts.map((item, index) => {
+            counter++;
+            return (
+              <div key={counter} className={`${styles.rowStriped} flex border`}>
+                <div className={`w-[30%] ${styles.textEllipsis} `}>
+                  {item.title}
+                </div>
 
-              <div className={`w-[20%] ${styles.textEllipsis} max-md:hidden`}>
-                {item.description}
-              </div>
+                <div className={`w-[20%] ${styles.textEllipsis} max-md:hidden`}>
+                  {item.description}
+                </div>
 
-              <div className="w-[20%] max-md:hidden">
-                {moment(item.createdDate).format("YYYY-MM-DD HH:mm")}
-              </div>
+                <div className="w-[20%] max-md:hidden">
+                  {moment(item.createdDate).format("YYYY-MM-DD HH:mm")}
+                </div>
 
-              <div className="w-[30%]">
-                <Link
-                  href={{
-                    pathname: "/posts/ViewPost",
-                    query: { postID: item._id },
-                  }}
-                  className="p-2 outline-none rounded hover-shadow text-success border-0 bg-transparent"
-                  aria-label="Details"
-                  title="View Details"
-                >
-                  <FontAwesomeIcon icon={faBook} />
-                </Link>
-                &nbsp;
-                <Link
-                  href={{
-                    pathname: "/posts/EditPost",
-                    query: { postID: item._id },
-                  }}
-                  className="p-2 outline-none rounded hover-shadow text-primary border-0 bg-transparent"
-                  aria-label="Edit"
-                  title="Edit"
-                >
-                  <FontAwesomeIcon icon={faPencilAlt} />
-                </Link>
-                &nbsp;
-                <button
-                  className="p-2 outline-none rounded hover-shadow text-danger border-0 bg-transparent"
-                  aria-label="Delete"
-                  title="Delete"
-                  onClick={(event) => handleDelete(item._id, event)}
-                >
-                  <FontAwesomeIcon icon={faTrashAlt} />
-                </button>
+                <div className="w-[30%]">
+                  <Link
+                    href={{
+                      pathname: "/posts/ViewPost",
+                      query: { postID: item._id },
+                    }}
+                    className="p-2 outline-none rounded hover-shadow text-success border-0 bg-transparent"
+                    aria-label="Details"
+                    title="View Details"
+                  >
+                    <FontAwesomeIcon icon={faBook} />
+                  </Link>
+                  &nbsp;
+                  <Link
+                    href={{
+                      pathname: "/posts/EditPost",
+                      query: { postID: item._id },
+                    }}
+                    className="p-2 outline-none rounded hover-shadow text-primary border-0 bg-transparent"
+                    aria-label="Edit"
+                    title="Edit"
+                  >
+                    <FontAwesomeIcon icon={faPencilAlt} />
+                  </Link>
+                  &nbsp;
+                  <button
+                    className="p-2 outline-none rounded hover-shadow text-danger border-0 bg-transparent"
+                    aria-label="Delete"
+                    title="Delete"
+                    onClick={(event) => handleDelete(item._id, event)}
+                  >
+                    <FontAwesomeIcon icon={faTrashAlt} />
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     </Layout>
   );

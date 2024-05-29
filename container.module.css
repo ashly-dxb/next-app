@@ -42,7 +42,9 @@
 }
 
 
-.smScrnNavMenu{
+.smScrnNavMenu {
+    border: 1px solid gray;
+    margin-top: 68px;
     z-index: 2;
 }
 

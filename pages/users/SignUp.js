@@ -2,7 +2,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner, faRefresh } from "@fortawesome/free-solid-svg-icons";
 import styles from "../../container.module.css";
 import Layout from "../components/layout";
 
@@ -16,9 +17,7 @@ export default function SignUp() {
   });
 
   const [error, setError] = useState("");
-
-  const [loading, setLoading] = useState(false);
-
+  const [isLoading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -156,7 +155,14 @@ export default function SignUp() {
               onClick={onSignup}
               className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32"
             >
-              Sign Up {loading ? "..." : ""}
+              Sign Up &nbsp;
+              <FontAwesomeIcon
+                icon={isLoading ? faSpinner : faRefresh}
+                className="fa spinner"
+                alt="Refresh"
+                title="Refresh"
+                width="20"
+              />
             </button>
           </div>
 

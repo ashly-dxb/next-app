@@ -3,6 +3,9 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import axios from "axios";
 // import "bootstrap/dist/css/bootstrap.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner, faRefresh } from "@fortawesome/free-solid-svg-icons";
+
 import styles from "../container.module.css";
 import Layout from "./components/layout";
 import { Eye, EyeSlash } from "react-bootstrap-icons";
@@ -23,12 +26,12 @@ export default function Login() {
   });
 
   // const [error, setError] = useState("");
-  // const [loading, setLoading] = useState(false);
 
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  // const [isLoading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   axios.defaults.withCredentials = true;
 
@@ -99,7 +102,7 @@ export default function Login() {
       >
         <div className="grid grid-cols-2 gap-4 max-w-xl m-auto mb-8">
           <h3 className={`${styles.pageHeading} text-2xl`}>
-            {loading ? "Please wait..." : "Login"}
+            {isLoading ? "Please wait..." : "Login"}
           </h3>
         </div>
 
@@ -199,7 +202,13 @@ export default function Login() {
               onClick={onLogin}
               className="py-3 px-6 bg-green-500 text-white font-bold w-full sm:w-32"
             >
-              Login
+              Login &nbsp;
+              <FontAwesomeIcon
+                icon={isLoading ? faSpinner : faRefresh}
+                className="fa spinner"
+                alt="Refresh"
+                title="Refresh"
+              />
             </button>
           </div>
 

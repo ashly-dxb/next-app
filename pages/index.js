@@ -100,7 +100,8 @@ const Home = ({ allMovies }) => {
                 Card content goes here. Card content goes here. Card content
                 goes here. Card content goes here. Card content goes here. Card
                 content goes here. Card content goes here. Card content goes
-                here. Card content goes here.{" "}
+                here. Card content goes here. Card content goes here. Card
+                content goes here.
               </p>
             </div>
           </div>
@@ -112,7 +113,7 @@ const Home = ({ allMovies }) => {
                 goes here. Card content goes here. Card content goes here. Card
                 content goes here. Card content goes here. Card content goes
                 here. Card content goes here. Card content goes here. Card
-                content goes here. Card content goes here.{" "}
+                content goes here.
               </p>
             </div>
           </div>
@@ -124,7 +125,46 @@ const Home = ({ allMovies }) => {
                 goes here. Card content goes here. Card content goes here. Card
                 content goes here. Card content goes here. Card content goes
                 here. Card content goes here. Card content goes here. Card
-                content goes here.{" "}
+                content goes here.
+              </p>
+            </div>
+          </div>
+
+          <div className="m-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+            <div className="bg-gray-700 rounded-lg shadow p-4">
+              <h3 className="text-white text-xl font-semibold">Card 4</h3>
+              <p className="text-white">
+                Card content goes here. Card content goes here. Card content
+                goes here. Card content goes here. Card content goes here. Card
+                content goes here. Card content goes here. Card content goes
+                here. Card content goes here. Card content goes here. Card
+                content goes here.
+              </p>
+            </div>
+          </div>
+
+          <div className="m-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+            <div className="bg-gray-700 rounded-lg shadow p-4">
+              <h3 className="text-white text-xl font-semibold">Card 5</h3>
+              <p className="text-white">
+                Card content goes here. Card content goes here. Card content
+                goes here. Card content goes here. Card content goes here. Card
+                content goes here. Card content goes here. Card content goes
+                here. Card content goes here. Card content goes here. Card
+                content goes here.
+              </p>
+            </div>
+          </div>
+
+          <div className="m-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+            <div className="bg-gray-700 rounded-lg shadow p-4">
+              <h3 className="text-white text-xl font-semibold">Card 6</h3>
+              <p className="text-white">
+                Card content goes here. Card content goes here. Card content
+                goes here. Card content goes here. Card content goes here. Card
+                content goes here. Card content goes here. Card content goes
+                here. Card content goes here. Card content goes here. Card
+                content goes here.
               </p>
             </div>
           </div>

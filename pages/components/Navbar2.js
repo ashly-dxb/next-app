@@ -57,7 +57,7 @@ export default function Navbar({ children }) {
   const pathname = usePathname();
 
   return (
-    <div className=" flex justify-between items-center w-full px-4 text-white bg-black">
+    <div className=" flex justify-between items-center w-full py-4 text-white bg-black">
       <div className="text-2xl font-signature ml-2">
         <a href="#" className="no-underline text-white">
           My-Tech-Blog

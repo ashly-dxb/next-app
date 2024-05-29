@@ -19,6 +19,10 @@ const UserSchema = new mongoose.Schema({
     required: [true, "Please provide a password"],
     maxlength: [100, "Password cannot be more than 100 characters"],
   },
+  createdDate: {
+    type: Date,
+    default: Date.now,
+  },
   isVerified: {
     type: Boolean,
     default: false,
