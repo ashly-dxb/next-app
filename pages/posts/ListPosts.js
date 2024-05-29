@@ -74,9 +74,9 @@ export default function ListPosts() {
 
         <div className="flex border h-25">
           <div className="w-[30%] ">Title</div>
-          <div className="w-[30%] max-md:hidden">Description</div>
+          <div className="w-[20%] max-md:hidden">Description</div>
           <div className="w-[20%] max-md:hidden">Date</div>
-          <div className="w-[20%] ">&nbsp;</div>
+          <div className="w-[30%] ">&nbsp;</div>
         </div>
 
         {isLoading ? <p>Loading...</p> : ""}
@@ -89,7 +89,7 @@ export default function ListPosts() {
                 {item.title}
               </div>
 
-              <div className={`w-[30%] ${styles.textEllipsis} max-md:hidden`}>
+              <div className={`w-[20%] ${styles.textEllipsis} max-md:hidden`}>
                 {item.description}
               </div>
 
@@ -97,7 +97,7 @@ export default function ListPosts() {
                 {moment(item.createdDate).format("YYYY-MM-DD HH:mm")}
               </div>
 
-              <div className="w-[20%]">
+              <div className="w-[30%]">
                 <Link
                   href={{
                     pathname: "/posts/ViewPost",
