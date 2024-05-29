@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import styles from "../../container.module.css";
+
 // import styles from "../../container.module.css";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -102,7 +104,9 @@ export default function Navbar({ children }) {
       </div>
 
       {isOpen && (
-        <ul className="flex flex-col justify-top items-center absolute top-0 left-0 px-2 w-full h-screen bg-gradient-to-b from-black to-gray-500">
+        <ul
+          className={`flex flex-col justify-top items-center absolute top-0 left-0 px-2 w-full h-screen bg-gradient-to-b from-black to-gray-500 ${styles.smScrnNavMenu}`}
+        >
           {links.map(({ id, link, text }) => (
             <li
               key={id}

@@ -41,6 +41,12 @@
     text-decoration: none !important;
 }
 
+
+.smScrnNavMenu{
+    z-index: 2;
+}
+
+
 .nav-link {
     color: white !important;
     letter-spacing: 1pt;
@@ -73,7 +79,6 @@
   
 .menuLink:hover {
     color: cyan;
-    /* border-bottom: 1px solid purple; */
     font-size: 25px;
 }
 
@@ -126,25 +131,18 @@ h3.pageHeading {
 }
 
 
-
-.password-toggle-icon {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
+.pViewer {
+    position: relative;
+    float: right;
+    margin-top: -45px;
+    margin-right: 6px;
+    
+    /* z-index: 1; */
     cursor: pointer;
+
+    /* background-color: yellow; */
 }
 
-.password-toggle-icon i {
-    font-size: 18px;
-    line-height: 1;
-    color: #333;
-    transition: color 0.3s ease-in-out;
-    margin-bottom: 20px;
-}
 
-.password-toggle-icon i:hover {
-    color: #000;
-}
 
 

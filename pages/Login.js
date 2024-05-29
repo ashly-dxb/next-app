@@ -5,6 +5,7 @@ import axios from "axios";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../container.module.css";
 import Layout from "./components/layout";
+import { Eye, EyeSlash } from "react-bootstrap-icons";
 
 // import IconButton from "@material-ui/core/IconButton";
 // import InputAdornment from "@material-ui/core/InputAdornment";
@@ -31,12 +32,12 @@ export default function Login() {
 
   axios.defaults.withCredentials = true;
 
-  // const handleClickShowPassword = () => {
-  //   setCredentials({
-  //     ...credentials,
-  //     showPassword: !credentials.showPassword,
-  //   });
-  // };
+  const handleClickShowPassword = () => {
+    setCredentials({
+      ...credentials,
+      showPassword: !credentials.showPassword,
+    });
+  };
 
   // const handleMouseDownPassword = (event) => {
   //   event.preventDefault();
@@ -155,10 +156,30 @@ export default function Login() {
               className="border-2 border-solid border-gray-400 p-3 md:text-xl w-full hover:border-green-500 focus:outline-blue-500"
               autoComplete="off"
             />
-            <span className="password-toggle-icon">
-              <i className="fas fa-eye"></i>
-            </span>
 
+            <div className={`${styles.pViewer}`}>
+              <i
+                className="fa fa-eye-slash"
+                aria-hidden="true"
+                onClick={handleClickShowPassword}
+              >
+                {credentials.showPassword ? (
+                  <EyeSlash
+                    title="hide"
+                    color="royalblue"
+                    size={24}
+                    className="m-2"
+                  />
+                ) : (
+                  <Eye
+                    title="show"
+                    color="royalblue"
+                    size={24}
+                    className="m-2"
+                  />
+                )}
+              </i>
+            </div>
             {errors.password && (
               <span className="mt-2 text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 {errors.password}
