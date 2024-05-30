@@ -105,7 +105,7 @@ export default function Navbar({ children }) {
 
       {isOpen && (
         <ul
-          className={`flex flex-col justify-top items-center absolute top-0 left-0 px-2 w-full h-screen bg-gradient-to-b from-black to-gray-500 ${styles.smScrnNavMenu}`}
+          className={`flex flex-col justify-top items-center absolute top-0 left-0 px-2 w-full h-screen bg-gradient-to-b from-black to-gray-500 ${styles.smallScreenNavMenu}`}
         >
           {links.map(({ id, link, text }) => (
             <li

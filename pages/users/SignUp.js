@@ -11,9 +11,9 @@ export default function SignUp() {
   const router = useRouter();
 
   const [user, setUser] = useState({
-    email: null,
-    username: null,
-    password: null,
+    email: "",
+    username: "",
+    password: "",
   });
 
   const [error, setError] = useState("");
@@ -59,7 +59,7 @@ export default function SignUp() {
     setLoading(true);
 
     try {
-      const response = await axios.post("../api/users/signup", user);
+      const response = await axios.post("../api/users", user);
       if (response.data.success) {
         setLoading(false);
         router.push("/Login");

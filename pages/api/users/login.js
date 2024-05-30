@@ -75,7 +75,7 @@ export default async function handler(req, res) {
 
         setCookie("my_access_token", token, cookieOpt);
 
-        console.log("COOKIES RETRIEVED", getCookie("my_access_token"));
+        console.log("COOKIES RETRIEVED :: ", getCookie("my_access_token"));
 
         // Create a JSON response indicating successful login
         res.status(200).json({

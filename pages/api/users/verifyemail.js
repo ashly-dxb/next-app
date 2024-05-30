@@ -1,13 +1,13 @@
 import dbConnect from "../../../lib/dbConnect";
 import Users from "../../../models/Users";
 
-export async function handler(req, res) {
+export default async function handler(req, res) {
   const { method } = req;
 
   await dbConnect();
 
   switch (method) {
-    case "GET":
+    case "POST":
       try {
         // It extracts the token property from the JSON body of the incoming request.
         const { token } = req.body;
@@ -17,21 +17,24 @@ export async function handler(req, res) {
           verifyTokenExpiry: { $gt: Date.now() },
         });
 
+        console.log("User by token: ", user);
+
         if (!user) {
           return res
-            .status(400)
+            .status(200)
             .json({ success: false, message: "Invalid token" });
         }
 
-        user.usVerified = true;
+        user.isVerified = true;
         user.verifyToken = undefined;
         user.verifyTokenExpiry = undefined;
 
-        await user.save();
+        const savedUser = await user.save();
 
         res.status(200).json({
-          success: true,
           message: "Email verified successfully",
+          success: true,
+          savedUser,
         });
       } catch (error) {
         res.status(500).json({ success: false, message: error.message });

@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
         <meta name="description" content="Ashly Thomas Abraham&#39;s website" />
         <meta
           name="keywords"
-          content="Ashly Thomas Abraham, Software Dubai, Web developer, Professional Web Developer, Trinity Church Dubai"
+          content="Ashly Thomas Abraham, Software Developer Dubai, Web Developer, Professional Web Developer, Trinity Church Dubai"
         />
       </Head>
       <Component {...pageProps} />

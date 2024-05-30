@@ -1,6 +1,7 @@
-import bcryptjs from "bcryptjs";
 import dbConnect from "../../../lib/dbConnect";
 import Users from "../../../models/Users";
+import bcryptjs from "bcryptjs";
+import sendEmail from "../../../lib/sendEmail";
 
 // http://localhost:3000/api/users/signup
 
@@ -36,13 +37,25 @@ export default async function handler(req, res) {
 
         const savedUser = await newUser.save();
 
+        const userID = savedUser._id;
+        const userID2 = userID.toString();
+        // console.log("savedUser._id :::", userID2, savedUser._id.toString());
+
+        // send verification email
+        const mailResp = await sendEmail({
+          email,
+          emailType: "VERIFY",
+          userId: savedUser._id.toString(),
+        });
+
         res.status(200).json({
           message: "User created successfully",
           success: true,
+          mailStatus: mailResp,
           savedUser,
         });
       } catch (error) {
-        res.status(400).json({ success: false, message: error.message });
+        res.status(500).json({ success: false, message: error.message });
       }
       break;
 

@@ -9,16 +9,7 @@ export default function VerifyEmail() {
   const [token, setToken] = useState("");
   const [verified, setVerified] = useState(false);
   const [error, setError] = useState(false);
-
-  const verifyUserEmail = async () => {
-    try {
-      await axios.post("../api/users/verifyemail", { token });
-      setVerified(true);
-    } catch (error) {
-      setError(true);
-      console.log(error.response.data);
-    }
-  };
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
     const urlToken = window.location.search.split("=")[1];
@@ -31,31 +22,52 @@ export default function VerifyEmail() {
     }
   }, [token]);
 
+  const verifyUserEmail = async () => {
+    try {
+      const response = await axios.post("../api/users/verifyemail", { token });
+      if (response.data.success) {
+        setVerified(true);
+      } else {
+        setVerified(false);
+        setError(true);
+        setErrorMsg(response.data.message);
+      }
+    } catch (error) {
+      setError(true);
+      setErrorMsg(error.response.data);
+      console.log(error.response.data);
+    }
+  };
+
   return (
     <Layout>
       <div
-        className={`d-flex justify-content-center align-items-center bg-light ${styles.myContainer}`}
+        className={`max-w-xl bg-white py-10 px-5 m-auto w-full mt-10 border-2 ${styles.myContainer}`}
       >
-        <div className="py-2 px-3 col-lg-6 col-md-8 col-12">
-          <h3 className={`${styles.pageHeading}`}>Verify Email</h3>
-
-          <h3 className="p-2 bg-orange-500 text-black">
-            {token ? `${token}` : "No token"}
-          </h3>
-
-          {verified && (
-            <div>
-              <h2 className="text-2xl">Email Verified</h2>
-              <Link href="/login">Login</Link>
-            </div>
-          )}
-
-          {error && (
-            <div>
-              <h3 className="text-3xl font-bold underline bg-red-500">Error</h3>
-            </div>
-          )}
+        <div className="m-auto mb-8">
+          <h3 className={`${styles.pageHeading} text-2xl`}>Verify Email</h3>
         </div>
+
+        <div className="border-2 bg-orange-500 mb-3 w-full">
+          <p className="text-2xl p-2">
+            {token ? `Token: ${token}` : "Token not found"}
+          </p>
+        </div>
+
+        {verified && (
+          <div className="border-2 bg-green-500 mb-3 w-full">
+            <p className="text-2xl p-2">Email verified successfully</p>
+            <Link href="/Login" className="p-2">
+              Login
+            </Link>
+          </div>
+        )}
+
+        {error && (
+          <div className="border-2 bg-red-500 mb-3 w-full">
+            <p className="text-2xl p-2">Error occured {": " + errorMsg}</p>
+          </div>
+        )}
       </div>
     </Layout>
   );
